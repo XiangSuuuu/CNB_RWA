@@ -1,0 +1,131 @@
+body {
+  /* background: url('./static/public/bg0.png') no-repeat; */
+  background-size: 100% 100%;
+  background-color: #000000;
+}
+input {
+  font-size: 24rpx;
+  width: 100%;
+  color: #333333;
+  font-family: 'Open Sans';
+  font-weight: 400;
+}
+.u-indexed-list-alert {
+  z-index: 999999;
+}
+.uni-textarea {
+  width: 100%;
+}
+.inp-name {
+  color: #C4C8D9;
+  font-size: 28rpx;
+  margin-bottom: 24rpx;
+}
+.inp-wrap {
+  width: 100%;
+  min-height: 64rpx;
+  background: #F7F7F5;
+  border-radius: 20rpx;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  margin-bottom: 32rpx;
+  
+}
+.pages {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 40rpx;
+  padding-top: 140rpx;
+  padding-bottom: 42rpx;
+  box-sizing: border-box;
+  color: #FFFFFF;
+}
+.model-type {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99899;
+}
+.uni-input-wrapper {
+  text-align: left;
+  font-size: 28rpx;
+}
+.uni-input-placeholder {
+  color: #878A9A;
+  font-size: 28rpx;
+}
+.uni-textarea-placeholder {
+  color: #878A9A;
+}
+.size-color {
+  height: 60rpx;
+  line-height: 60rpx;
+  font-weight: bold;
+  background-image: linear-gradient(45deg, #35FFAB, #0095E4);
+  -webkit-background-clip: text;
+  color: transparent;
+  /* 隐藏原始文本颜色 */
+  display: inline-block;
+  /* 确保伪元素正确显示 */
+  font-size: 44rpx;
+}
+.max-btn {
+  width: 100%;
+  height: 128rpx;
+  background: linear-gradient(45deg, #0BFDA9 0%, #0095E4 100%);
+  border-radius: 120rpx;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  font-weight: bold;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.max-btn .rt-icon {
+  width: 42rpx;
+  height: 42rpx;
+  margin-left: 12rpx;
+}
+.max-bg-btn {
+  width: 100%;
+  height: 96rpx;
+  background-size: 100% 100%;
+  color: #D0EBFC;
+  font-size: 28rpx;
+  font-weight: bold;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.min-btn {
+  height: 60rpx;
+  line-height: 60rpx;
+  /* background: linear-gradient(45deg, #35FFAB 0%, #0095E4 100%); */
+  border-radius: 20rpx;
+  background-color: #333333;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  padding: 0 20rpx;
+  font-weight: bold;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 826px) {
+  .pages {
+    width: 720px !important;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "@metamask/legacy-web3": "^2.0.0",
+    "compressorjs": "^1.2.1",
+    "crypto-js": "^4.2.0",
+    "echarts": "^5.6.0",
+    "element-ui": "^2.15.8",
+    "normalize.css": "^8.0.1",
+    "uni-read-pages": "^1.0.5",
+    "uni-simple-router": "^2.0.8-beta.3",
+    "uview-ui": "file:uview-ui",
+    "web3": "^1.7.3"
+  },
+  "devDependencies": {
+    "sass": "^1.51.0",
+    "sass-loader": "^10.2.1"
+  }
+}
