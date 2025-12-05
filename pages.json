@@ -5,7 +5,7 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 	    // ---------------------------------------------------------首页
 		{
-			"path": "pages/index/index" //首页
+			"path": "pages/ecological_rights/ecological_rights" //首页
 		},
 		{
 			"path" : "components/BottomBar",
@@ -18,7 +18,7 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationStyle": "custom",
-		"navigationBarTitleText": "VBO",
+		"navigationBarTitleText": "CNE",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	}

@@ -1,16 +1,10 @@
 <template>
 	<view class="pages">
-		<view class="head-wrap flex-center">
-			<view class="title">
-				我的
-			</view>
-			<image src="/static/public/arrow-left-white.png" @click="returnPage()" mode="widthFix" class="back_img">
-			</image>
+
+		<view style="position: absolute; top: 0; left: 0; z-index: -1;">
+			<image src="/static/mine/bg0.png" style="width: 780rpx; height: 576rpx;"></image>
 		</view>
-		<view style="position: absolute; top: 0; right: 0;">
-			<image src="/static/mine/bg0.png" style="width: 544rpx; height: 430rpx;"></image>
-		</view>
-		<view class="flex-l" style="width: 100%; height: 100rpx; margin-bottom: 52rpx;">
+		<!-- <view class="flex-l" style="width: 100%; height: 100rpx; margin-bottom: 52rpx;">
 			<image src="/static/mine/Ellipse 7.png" style="height: 100rpx; width: 100rpx; margin-right: 28rpx;"></image>
 			<view>
 				<view style="font-size: 28rpx; font-weight: 600; color: #ffffff;">
@@ -23,204 +17,202 @@
 							}">
 						V{{ userInfo.vipNum }}
 					</view>
-					<view style="width: 18rpx;"></view>
-					<view v-if="userInfo.nodeCode>1" class="flex-center"
-						style="font-size: 28rpx; font-weight: 600; color: #E1E1E1; width: 160rpx; height: 48rpx; background: url('../../static/mine/superNode.png') no-repeat; background-size: 100% 100%;">
-						超级节点
+				</view>
+			</view>
+		</view> -->
+
+		<view class="order-sele-wrap flex-center">
+			<view class="order-item flex-center" @click="switchTab(0)"
+				:class="tabIx == 0 ? 'order-item-in gradient-box' : ''">
+				{{$t('index._TEXT124')}}
+			</view>
+			<view class="order-item flex-center" @click="switchTab(1)"
+				:class="tabIx == 1 ? 'order-item-in gradient-box' : ''">
+				{{$t('index._TEXT125')}}
+			</view>
+		</view>
+		<view style="width: 100%; height: 2rpx; background-color: #655A8980; position: relative; top: -10rpx;">
+
+		</view>
+
+		<view v-if="tabIx==0">
+			<view class="pill-box" style="height: 68rpx;">
+				<view style="padding: 0 24rpx; width: 100%; height: 100%;" class="flex-lr">
+					<view style="font-size: 24rpx; color: #C07AFF; font-weight: 400;">
+						{{$t('index._TEXT127')}}
 					</view>
+					<view style="font-size: 28rpx; color: #FFFFFF; font-weight: 700;">
+						{{ userInfo.vipName }}
+					</view>
+				</view>
+			</view>
+			<view class="pill-box" style="height: 68rpx;">
+				<view style="padding: 0 24rpx; width: 100%; height: 100%;" class="flex-lr">
+					<view style="font-size: 24rpx; color: #C07AFF; font-weight: 400;">
+						{{$t('index._TEXT126')}}
+					</view>
+					<view style="font-size: 28rpx; color: #FFFFFF; font-weight: 700;">
+						V{{ userInfo.vipNum }}
+					</view>
+				</view>
+			</view>
+			
+			<view class="pill-box" style="height: 68rpx;">
+				<view style="padding: 0 24rpx; width: 100%; height: 100%;" class="flex-lr">
+					<view style="font-size: 24rpx; color: #C07AFF; font-weight: 400;">
+						{{$t('index._TEXT128')}}
+					</view>
+					<view style="font-size: 28rpx; color: #FFFFFF; font-weight: 700;">
+						{{ userInfo.count1 }}
+					</view>
+				</view>
+			</view>
+			<view class="pill-box" style="height: 68rpx;">
+				<view style="padding: 0 24rpx; width: 100%; height: 100%;" class="flex-lr">
+					<view style="font-size: 24rpx; color: #C07AFF; font-weight: 400;">
+						{{$t('index._TEXT129')}}
+					</view>
+					<view style="font-size: 28rpx; color: #FFFFFF; font-weight: 700;">
+						{{ teamEquityValue }}
+					</view>
+				</view>
+			</view>
+			<view style="height: 40rpx;">
+			
+			</view>
+			
+			<view class="junior-content-wrap">
+				<view class="lists-wrap">
+					<view class="lists inp-wrap-two flex-lr">
+						<view class="flex-l text">{{$t('index._TEXT130')}}</view>
+						<view>{{valueSubstr(userInfo.invitationCode)}}</view>
+					</view>
+			
+					<view class="lists inp-wrap-two flex-lr" style="margin-bottom: 0rpx; cursor: pointer;"
+						@click="$Common.copy(inviteAddr)">
+						<view class="flex-l text">{{$t('index._TEXT131')}}</view>
+						<view class="flex-r">
+							{{valueSubstr(inviteAddr)}}
+							<image src="/static/mine/copy.png" mode="widthFix" class="copy-icon"></image>
+						</view>
+					</view>
+				</view>
+			</view>
+
+			<view style="height: 40rpx;">
+
+			</view>
+
+			<view class="trend-wraps">
+				<view class="top-name flex-lr">
+					<view class="row">{{$t('index._TEXT132')}}</view>
+					<view class="row flex-center">{{$t('index._TEXT133')}}</view>
+					<view class="row flex-center">{{$t('index._TEXT134')}}</view>
+					<view class="row flex-r">{{$t('index._TEXT135')}}</view>
+				</view>
+
+				<view style="width: 100%; height: 2rpx; background-color: #282132;"></view>
+				<view class="buy-coin-wrap">
+					<view class="shop-item flex-lr" v-for="(item, index) in teamList" :key="index">
+						<view class="row">{{valueSubstr(item.account)}}</view>
+						<view class="row flex-center">{{item.equityValue}}</view>
+						<view class="row flex-center">{{item.teamEquityValue}}</view>
+						<view class="row flex-r">Level {{item.vip}}</view>
+					</view>
+					<None v-if="!teamList || teamList.length == 0"></None>
 				</view>
 			</view>
 		</view>
+		<view v-if="tabIx==1">
+			<view class="lists2 flex-lr">
+				<view class="flex-l">{{$t('index._TEXT136')}}</view>
+				<view class="flex-r nums">
+					{{truncateToFixed((userInfo.useBalance1/unitNum),2)}}
+					<view class="btns flex-center" @click="gainWithdrawal(userInfo.uesBalance1,1)">
+						{{$t('index._TEXT137')}}
+					</view>
+				</view>
+			</view>
+			
+			<view class="lists2 flex-lr">
+				<view class="flex-l">{{$t('index._TEXT138')}}</view>
+				<view class="flex-r nums">
+					{{truncateToFixed((userInfo.useBalance2/unitNum),2)}}
+					<view class="btns flex-center" @click="gainWithdrawal(userInfo.uesBalance2,2)">
+						{{$t('index._TEXT137')}}
+					</view>
+				</view>
+			</view>
+			
+			<view class="lists2 flex-lr">
+				<view class="flex-l">{{$t('index._TEXT139')}}</view>
+				<view class="flex-r nums">
+					{{truncateToFixed((userInfo.useBalance3/unitNum),2)}}
+					<view class="btns flex-center" @click="gainWithdrawal(userInfo.uesBalance3,3)">
+						{{$t('index._TEXT137')}}
+					</view>
+				</view>
+			</view>
+			<view class="lists2 flex-lr">
+				<view class="flex-l">{{$t('index._TEXT140')}}</view>
+				<view class="flex-r nums">
+					{{truncateToFixed((userInfo.useBalance4/unitNum),2)}}
+					<view class="btns flex-center" @click="gainWithdrawal(userInfo.uesBalance4,4)">
+						{{$t('index._TEXT137')}}
+					</view>
+				</view>
+			</view>
+			<view style="height: 20rpx;">
 
-		<view class="flex-l">
-			<image src="/static/public/arrow-up.png" style="height: 20rpx; width: 20rpx;"></image>
-			<view style="width: 8rpx;"></view>
-			<view style="font-size: 24rpx; font-weight: 400; color: white;">
-				我的资产：
 			</view>
-		</view>
-		<view style="width: 100%;" class="flex-lr">
-			<view class="asset-box box">
-				<!-- 标题 -->
-				<view class="asset-header">推荐收益</view>
+			<view class="order-sele-wrap flex-center">
+				<view class="order-item flex-center" @click="gainTabIx(1)" :class="tabIx2 == 1 ? 'order-item-in' : ''">
+					{{$t('index._TEXT141')}}
+				</view>
+				<view class="order-item flex-center" @click="gainTabIx(2)" :class="tabIx2 == 2 ? 'order-item-in' : ''">
+					{{$t('index._TEXT142')}}
+				</view>
+			</view>
+			<view style="width: 100%; height: 2rpx; background-color: #655A8980; position: relative; top: -10rpx;">
 
-				<!-- 数值 -->
-				<view class="asset-values flex-center">
-					<view class="flex-center" style="width: 33%;">{{truncateToFixed((userInfo.uesBalance6/unitNum),2)}}
-						<view style="color: #FFFFFFCC; font-size: 24rpx; font-weight: 500;"> USDT</view>
-					</view>
-				</view>
-				<!-- 标签 -->
-				<view class="asset-labels flex-center">
-					<view @click="gainWithdrawal(userInfo.uesBalance6,6)" class="flex-center" style="width: 33%;">
-						<view class="flex-center"
-							style="font-size: 24rpx; font-weight: 400; color: #000000; width: 150rpx; height: 44rpx; border-radius: 40rpx; background: linear-gradient(90deg, #FFB92F 0%, #F8FF2F 100%);">
-							领取收益</view>
-					</view>
-				</view>
 			</view>
-			<view style="width: 20rpx;"></view>
-			<view class="asset-box box">
-				<!-- 标题 -->
-				<view class="asset-header">VE线性释放</view>
-
-				<!-- 数值 -->
-				<view class="asset-values flex-center">
-					<view class="flex-center" style="width: 33%;">{{truncateToFixed((userInfo.uesBalance8/unitNum),2)}}
-						<view style="color: #FFFFFFCC; font-size: 24rpx; font-weight: 500;">VE</view>
+			<view class="shop-wrap">
+				<view class="shop-item" v-for="(item, index) in orderList" :key="index" :style="getItemStyle(item.num)">
+					<view class="head-text flex-l">
+						<image src="/static/trade/head.png" mode="widthFix" class="head-icon"></image>
+						{{ valueSubstr(item.account) }}
 					</view>
-				</view>
-				<!-- 标签 -->
-				<view class="asset-labels flex-center">
-					<view @click="gainWithdrawal(userInfo.uesBalance8,8)" class="flex-center" style="width: 33%;">
-						<view class="flex-center"
-							style="font-size: 24rpx; font-weight: 400; color: #000000; width: 150rpx; height: 44rpx; border-radius: 40rpx; background: linear-gradient(90deg, #FFB92F 0%, #F8FF2F 100%);">
-							领取收益</view>
+					<view class="flex-lr lists">
+						<view class="flex-l">
+							{{$t('index._TEXT143')}}：
+							<view class="title-num">{{ item.day }}</view>
+							{{$t('index._TEXT25')}}&nbsp;
+							{{$t('index._TEXT144')}}&nbsp;
+							<view class="title-num">
+								{{ calculateRemainingReward(item.totalReward, item.claimedReward) }}
+							</view>
+						</view>
+						<view class="flex-r">
+							<view>{{$t('index._TEXT145')}}</view>
+							<view class="flex-r">
+								<view class="num">{{ Number((item.num).toFixed(4)) }}</view>
+								<image src="/static/trade/coin.png" mode="widthFix" class="coins"></image>
+							</view>
+						</view>
 					</view>
-				</view>
-			</view>
-		</view>
-		<view style="width: 100%;" class="flex-lr">
-			<view class="asset-box box">
-				<!-- 标题 -->
-				<view class="asset-header">超级节点收益</view>
-
-				<!-- 数值 -->
-				<view class="asset-values flex-center">
-					<view class="flex-center" style="width: 33%;">{{truncateToFixed((userInfo.uesBalance9/unitNum),2)}}
-						<view style="color: #FFFFFFCC; font-size: 24rpx; font-weight: 500;">VBO</view>
-					</view>
-				</view>
-				<!-- 标签 -->
-				<view class="asset-labels flex-center">
-					<view @click="gainWithdrawal(userInfo.uesBalance9,9)" class="flex-center" style="width: 33%;">
-						<view class="flex-center"
-							style="font-size: 24rpx; font-weight: 400; color: #000000; width: 150rpx; height: 44rpx; border-radius: 40rpx; background: linear-gradient(90deg, #FFB92F 0%, #F8FF2F 100%);">
-							领取收益</view>
-					</view>
-				</view>
-			</view>
-			<view style="width: 20rpx;"></view>
-			<view class="asset-box box">
-				<!-- 标题 -->
-				<view class="asset-header">超级节点收益</view>
-
-				<!-- 数值 -->
-				<view class="asset-values flex-center">
-					<view class="flex-center" style="width: 33%;">{{truncateToFixed((userInfo.uesBalance10/unitNum),2)}}
-						<view style="color: #FFFFFFCC; font-size: 24rpx; font-weight: 500;">VE</view>
-					</view>
-				</view>
-				<!-- 标签 -->
-				<view class="asset-labels flex-center">
-					<view @click="gainWithdrawal(userInfo.uesBalance10,10)" class="flex-center" style="width: 33%;">
-						<view class="flex-center"
-							style="font-size: 24rpx; font-weight: 400; color: #000000; width: 150rpx; height: 44rpx; border-radius: 40rpx; background: linear-gradient(90deg, #FFB92F 0%, #F8FF2F 100%);">
-							领取收益</view>
-					</view>
-				</view>
-			</view>
-		</view>
-		<view style="width: 100%;" class="flex-lr">
-			<view class="asset-box box">
-				<!-- 标题 -->
-				<view class="asset-header">V7-V8-V9收益</view>
-
-				<!-- 数值 -->
-				<view class="asset-values flex-center">
-					<view class="flex-center" style="width: 33%;">{{truncateToFixed((userInfo.uesBalance12/unitNum),2)}}
-						<view style="color: #FFFFFFCC; font-size: 24rpx; font-weight: 500;">VE</view>
-					</view>
-				</view>
-				<!-- 标签 -->
-				<view class="asset-labels flex-center">
-					<view @click="gainWithdrawal(userInfo.uesBalance12,12)" class="flex-center" style="width: 33%;">
-						<view class="flex-center"
-							style="font-size: 24rpx; font-weight: 400; color: #000000; width: 150rpx; height: 44rpx; border-radius: 40rpx; background: linear-gradient(90deg, #FFB92F 0%, #F8FF2F 100%);">
-							领取收益</view>
-					</view>
-				</view>
-			</view>
-			<view style="width: 20rpx;"></view>
-			<view class="asset-box box">
-				<!-- 标题 -->
-				<view class="asset-header">V7-V8-V9收益</view>
-
-				<!-- 数值 -->
-				<view class="asset-values flex-center">
-					<view class="flex-center" style="width: 33%;">{{truncateToFixed((userInfo.uesBalance11/unitNum),2)}}
-						<view style="color: #FFFFFFCC; font-size: 24rpx; font-weight: 500;">VBO</view>
-					</view>
-				</view>
-				<!-- 标签 -->
-				<view class="asset-labels flex-center">
-					<view @click="gainWithdrawal(userInfo.uesBalance11,11)" class="flex-center" style="width: 33%;">
-						<view class="flex-center"
-							style="font-size: 24rpx; font-weight: 400; color: #000000; width: 150rpx; height: 44rpx; border-radius: 40rpx; background: linear-gradient(90deg, #FFB92F 0%, #F8FF2F 100%);">
-							领取收益</view>
-					</view>
-				</view>
-			</view>
-		</view>
-		<view style="width: 100%;" class="flex-l">
-			<view class="asset-box box">
-				<!-- 标题 -->
-				<view class="asset-header">LP收益</view>
-				<!-- 数值 -->
-				<view class="asset-values flex-center">
-					<view class="flex-center" style="width: 33%;">0 <view
-							style="color: #FFFFFFCC; font-size: 24rpx; font-weight: 500;">VBO</view>
-					</view>
-				</view>
-				<!-- 标签 -->
-				<view class="asset-labels flex-center">
-					<view class="flex-center" style="width: 33%;">
-						<view class="flex-center"
-							style="font-size: 24rpx; font-weight: 400; color: #000000; width: 150rpx; height: 44rpx; border-radius: 40rpx; background: linear-gradient(90deg, #FFB92F 0%, #F8FF2F 100%);">
-							领取收益</view>
-					</view>
-				</view>
-			</view>
-			<view style="width: 20rpx;"></view>
-			<view class="asset-box box">
-				<!-- 标题 -->
-				<view class="asset-header">团队收益</view>
-				<!-- 数值 -->
-				<view class="asset-values flex-center">
-					<view class="flex-center" style="width: 33%;">{{truncateToFixed((userInfo.uesBalance13/unitNum),2)}}
-						<view style="color: #FFFFFFCC; font-size: 24rpx; font-weight: 500;">USDT</view>
-					</view>
-				</view>
-				<!-- 标签 -->
-				<view class="asset-labels flex-center">
-					<view @click="gainWithdrawal(userInfo.uesBalance13,13)" class="flex-center" style="width: 33%;">
-						<view class="flex-center"
-							style="font-size: 24rpx; font-weight: 400; color: #000000; width: 150rpx; height: 44rpx; border-radius: 40rpx; background: linear-gradient(90deg, #FFB92F 0%, #F8FF2F 100%);">
-							领取收益</view>
+					<view class="flex-lr lists">
+						<view class="flex-l">
+							<view>{{$t('index._TEXT146')}}：</view>
+							<view class="flex-r">
+								<view class="title-num">{{ item.endTime }}</view>
+							</view>
+						</view>
+						<view>{{ item.createTime }}</view>
 					</view>
 				</view>
 			</view>
 
 		</view>
-		<view style="height: 36rpx;"></view>
-		<view class="flex-l">
-			<image src="/static/public/arrow-up.png" style="height: 20rpx; width: 20rpx;"></image>
-			<view style="width: 8rpx;"></view>
-			<view style="font-size: 24rpx; font-weight: 400; color: white;">
-				我的资产转入记录：
-			</view>
-		</view>
-		<CollapseBox class="box" title="我的资产转入记录：">
-			<!-- 👇 slot内容，自定义展开部分 -->
-			<view v-for="(item, index) in assetTransferRecords" :key="index">
-				<view style="padding: 20rpx 20rpx">
-					<view style="font-size: 24rpx; color: #FFFFFFCC;">{{item.createTime}}</view>
-					<view style="height: 12rpx;"></view>
-					<view style="font-size: 24rpx; color: #FFFFFF;">您有一笔{{truncateToFixed((item.money/unitNum),2)}} {{approveMap[item.accountType]}}的理财资产，已转入到我的资产</view>
-				</view>
-				<view style="width: 100%; height: 2rpx; background-color: #FFFFFF26;"></view>
-			</view>
-		</CollapseBox>
 	</view>
 </template>
 
@@ -233,7 +225,6 @@
 		mapActions
 	} from 'vuex';
 	import Model from '@/components/model.vue';
-	import CollapseBox from "@/pages/agreement_order/components/CollapseBox.vue";
 	import {
 		uniGrid,
 		uniGridItem
@@ -241,7 +232,6 @@
 	export default {
 		components: {
 			Model,
-			CollapseBox
 		},
 		data() {
 			return {
@@ -249,15 +239,11 @@
 				unitNum: 10 ** 18,
 				userInfo: null,
 				assetTransferRecords: null,
-				approveMap: {
-					6: "USDT",
-					8: "VE",
-					9: "VBO",
-					10: "VE",
-					11: "VBO",
-					12: "VE",
-					13: "USDT"
-				},
+				tabIx: 0,
+				tabIx2: 1,
+				orderList: [],
+				teamList: [],
+				teamEquityValue:null,
 			}
 		},
 		watch: {
@@ -273,7 +259,7 @@
 							if (uni.getStorageSync('accessToken')) {
 								this.getConfigs();
 							}
-							
+
 						}
 					}
 				},
@@ -293,6 +279,14 @@
 		},
 		computed: {
 			...mapState(['myAddress', 'myRelation', 'tokenData', 'signature', 'userData', 'totalContract']),
+			inviteAddr() {
+				if (this.userInfo && this.userInfo.personalInvitationCode) {
+					return this.$Common.getShareLink(this.userInfo.personalInvitationCode);
+				} else {
+					return '';
+				}
+			
+			},
 		},
 		mounted() {
 			this.init();
@@ -301,7 +295,14 @@
 			...mapActions(['gainUserData']),
 			init() {
 				this.getUserInfo();
-				this.getRecordAccountList()
+				this.initList();
+				this.$Request.get('app/user/teamInfo', {}).then((res) => {
+					if (res.code == 200) {
+						this.teamList = res.data.inviteUserList;
+						this.teamEquityValue = res.data.teamEquityValue;
+						// this.teamEquityValue = res.data.teamEquityValue;
+					}
+				});
 			},
 			getVipBg(vipNum) {
 				// 可根据实际文件数量调整
@@ -328,311 +329,197 @@
 						return '/static/mine/v0.png'; // 默认等级背景
 				}
 			},
-			async gainWithdrawal(amount, type) {
+			getItemStyle(num) {
+				const value = Number(num.toFixed(4));
+				if (value >= 10000) {
+					return {
+						background: 'linear-gradient(0deg, #2c2136, #1c1c1c)',
+						border: '3rpx solid #CCEAFA'
+					};
+				} else if (value >= 5000) {
+					return {
+						background: 'linear-gradient(0deg, #2c2136, #1c1c1c)',
+						border: '3rpx solid #F0FACC'
+					};
+				} else if (value >= 1000) {
+					return {
+						background: 'linear-gradient(0deg, #2c2136, #1c1c1c)',
+						border: '3rpx solid #F9BB92'
+					};
+				} else if (value >= 500) {
+					return {
+						background: 'linear-gradient(0deg, #2c2136, #1c1c1c)',
+						border: '3rpx solid #F9E992'
+					};
+				} else if (value >= 100) {
+					return {
+						background: 'linear-gradient(0deg, #2c2136, #1c1c1c)',
+						border: '3rpx solid #DBDBDB'
+					};
+				} else if (value >= 10) {
+					return {
+						background: 'linear-gradient(0deg, #2c2136, #1c1c1c)',
+						border: '3rpx solid #DBB9F8'
+					};
+				} else {
+					return {}; // 默认样式
+				}
+			},
+			gainTabIx(ix) {
+				this.tabIx2 = ix;
+				this.initList();
+			},
+			initList() {
+				this.$Request.get('app/getPledgeList', {
+					pageNum: 1,
+					pageSize: 200,
+					stateCode: this.tabIx2,
+				}).then((res) => {
+					if (res.code == 200) {
+						this.orderList = res.rows;
+					}
+				});
+			},
+			switchTab(index) {
+				this.tabIx = index;
+
+			},
+			gainWithdrawal(amount, type) {
+				console.log(this.$staketcc)
+				console.log(this.$nodepooltcc)
+				// if (!Number(amount)) return this.$Common.showToast('暂无领取金额');
 				if (this.loading) return;
 				this.loading = true;
-			
-				// 1️⃣ 匹配授权地址
-				const approveMap = {
-					6: this.$incometcc,
-					8: this.$vereleasetcc,
-					9: this.$supernodetcc,
-					10: this.$supernodetcc,
-					11: this.$v9tcc,
-					12: this.$v9tcc,
-					13: this.$incometcc
-				};
-				
-				
-				
-				const approveAddress = approveMap[type];
-				if (!approveAddress) {
-					console.error("❌ 未匹配到授权地址");
-					this.loading = false;
-					return;
-				}
-			
-				try {
-					// 2️⃣ 获取提现所需手续费
-					const feeRes = await this.$Request.post('app/withdrawalGetFee', { number: amount, type });
-			
-					// 3️⃣ 检查授权情况
-					await this.approveMarts(0, approveAddress);
-			
-					const needApprove = this.toFixedSafe(this.toFixed(feeRes.data) / this.unitNum);
-					console.log("授权状态:", this.is_approve, "授权额度:", this.approveNum, "需要授权:", needApprove);
-			
-					// 4️⃣ 授权不足则重新授权
-					if (!this.is_approve || this.approveNum < needApprove) {
-						await this.isCoin(1, 1, needApprove, amount, type, approveAddress);
-						this.loading = false;
-						return;
-					}
-			
-					// 5️⃣ 授权足够则执行提现
-					const res = await this.$Request.post('app/withdrawal', { number: amount, type });
-					console.log("提现结果:", res);
-					
+				this.$Request.post('app/withdrawal', {
+					number: amount,
+					type: type,
+				}).then((res) => {
 					this.loading = false;
 					if (res.code == 200) {
 						this.userInfo['uesBalance' + type] = 0;
 						const bigNumber = this.toFixed(res.data.amount);
+						const bigKind = this.toFixed(res.data.kind);
 						const bigDeadline = this.toFixed(res.data.deadline);
-						const veFee = this.toFixed(res.data.veFee);
 						console.log(bigNumber.toString());
 						this.$Loading.handlemount();
-						if (type == 6) {
-							this.$incometcc.withdrawRecommend(
-								res.data.toAddress,
-								bigNumber.toString(),
-								veFee.toString(),
-								res.data.nonce,
-								bigDeadline.toString(),
-								res.data.sign,
-							).then((ret) => {
-								console.log(ret)
-								this.$Loading.handleDestory();
-								if (ret) {
-									console.log(ret)
-									this.$Request.post('app/withdrawalSuccess', {
-										nonce: res.data.nonce,
-										type: type,
-									}).then((val) => {
-										if (val.code == 200) {
-											this.$Common.showToast(this.$t(
-												'index._TEXT53'));
-											setTimeout(() => {
-												this.init()
-											}, 1000)
-										}
-									});
-								}
-							}, res => {
-								this.loading = false;
-								this.$Loading.handleDestory();
-								const err = JSON.parse(JSON.stringify(res))
-								console.log(err)
-								this.$Common.errPoint(err)
-							});
-						} else if (type == 9) {
-							console.log(this.$supernodetcc)
-							this.$supernodetcc.withdrawToken(
-								res.data.toAddress,
-								bigNumber.toString(),
-								veFee.toString(),
-								res.data.nonce,
-								bigDeadline.toString(),
-								res.data.sign,
-							).then((ret) => {
-								console.log(ret)
-								this.$Loading.handleDestory();
-								if (ret) {
-									console.log(ret)
-									this.$Request.post('app/withdrawalSuccess', {
-										nonce: res.data.nonce,
-										type: type,
-									}).then((val) => {
-										if (val.code == 200) {
-											this.$Common.showToast(this.$t(
-												'index._TEXT53'));
-											setTimeout(() => {
-												this.init()
-											}, 1000)
-										}
-									});
-								}
-							}, res => {
-								this.loading = false;
-								this.$Loading.handleDestory();
-								const err = JSON.parse(JSON.stringify(res))
-								console.log(err)
-								this.$Common.errPoint(err)
-							});
-						} else if (type == 10) {
-							this.$supernodetcc.withdrawVE(
-								res.data.toAddress,
-								bigNumber.toString(),
-								veFee.toString(),
-								res.data.nonce,
-								bigDeadline.toString(),
-								res.data.sign,
-							).then((ret) => {
-								console.log(ret)
-								this.$Loading.handleDestory();
-								if (ret) {
-									console.log(ret)
-									this.$Request.post('app/withdrawalSuccess', {
-										nonce: res.data.nonce,
-										type: type,
-									}).then((val) => {
-										if (val.code == 200) {
-											this.$Common.showToast(this.$t(
-												'index._TEXT53'));
-											setTimeout(() => {
-												this.init()
-											}, 1000)
-										}
-									});
-								}
-							}, res => {
-								this.loading = false;
-								this.$Loading.handleDestory();
-								const err = JSON.parse(JSON.stringify(res))
-								console.log(err)
-								this.$Common.errPoint(err)
-							});
-						} else if (type == 11) {
-							this.$v9tcc.withdrawToken(
-								res.data.toAddress,
-								bigNumber.toString(),
-								veFee.toString(),
-								res.data.nonce,
-								bigDeadline.toString(),
-								res.data.sign,
-							).then((ret) => {
-								console.log(ret)
-								this.$Loading.handleDestory();
-								if (ret) {
-									console.log(ret)
-									this.$Request.post('app/withdrawalSuccess', {
-										nonce: res.data.nonce,
-										type: type,
-									}).then((val) => {
-										if (val.code == 200) {
-											this.$Common.showToast(this.$t(
-												'index._TEXT53'));
-											setTimeout(() => {
-												this.init()
-											}, 1000)
-										}
-									});
-								}
-							}, res => {
-								this.loading = false;
-								this.$Loading.handleDestory();
-								const err = JSON.parse(JSON.stringify(res))
-								console.log(err)
-								this.$Common.errPoint(err)
-							});
-						} else if (type == 12) {
-							this.$v9tcc.withdrawVE(
-								res.data.toAddress,
-								bigNumber.toString(),
-								veFee.toString(),
-								res.data.nonce,
-								bigDeadline.toString(),
-								res.data.sign,
-							).then((ret) => {
-								console.log(ret)
-								this.$Loading.handleDestory();
-								if (ret) {
-									console.log(ret)
-									this.$Request.post('app/withdrawalSuccess', {
-										nonce: res.data.nonce,
-										type: type,
-									}).then((val) => {
-										if (val.code == 200) {
-											this.$Common.showToast(this.$t(
-												'index._TEXT53'));
-											setTimeout(() => {
-												this.init()
-											}, 1000)
-										}
-									});
-								}
-							}, res => {
-								this.loading = false;
-								this.$Loading.handleDestory();
-								const err = JSON.parse(JSON.stringify(res))
-								console.log(err)
-								this.$Common.errPoint(err)
-							});
-						} else if (type == 8) {
+						if (type == 1 || type == 2 || type == 3) {
 							const par = [
 								res.data.toAddress,
 								bigNumber.toString(),
+								bigKind.toString(),
 								res.data.nonce,
 								bigDeadline.toString(),
 								res.data.sign
 							]
 							console.log(par)
-					
-							this.$vereleasetcc.withdrawVE(
+							this.$staketcc.bnbAmount(
+
+							).then((ret) => {
+								this.$staketcc.withdraw(
+									res.data.toAddress,
+									bigNumber.toString(),
+									bigKind.toString(),
+									res.data.nonce,
+									bigDeadline.toString(),
+									res.data.sign, {
+										value: ret
+									}
+								).then((ret) => {
+									console.log(ret)
+									this.$Loading.handleDestory();
+									if (ret) {
+										console.log(ret)
+										this.$Request.post('app/withdrawalSuccess', {
+											nonce: res.data.nonce,
+											type: type,
+										}).then((val) => {
+											if (val.code == 200) {
+												this.$Common.showToast(this.$t(
+													'index._TEXT53'));
+												setTimeout(() => {
+													this.init()
+												}, 1000)
+											}
+										});
+									}
+								}, res => {
+									this.loading = false;
+									this.$Loading.handleDestory();
+									const err = JSON.parse(JSON.stringify(res))
+									console.log(err)
+									this.$Common.errPoint(err)
+								});
+							}, );
+
+
+						} else if (type == 4) { //
+							console.log([
 								res.data.toAddress,
 								bigNumber.toString(),
-								veFee.toString(),
+								// bigKind.toString(),
 								res.data.nonce,
 								bigDeadline.toString(),
-								res.data.sign,
+								res.data.sign
+							])
+							console.log(this.$vippooltcc)
+
+							this.$nodepooltcc.bnbAmount(
+
 							).then((ret) => {
-								console.log(ret)
-								this.$Loading.handleDestory();
-								if (ret) {
-									console.log(ret)
-									this.$Request.post('app/withdrawalSuccess', {
-										nonce: res.data.nonce,
-										type: type,
-									}).then((val) => {
-										if (val.code == 200) {
-											this.$Common.showToast(this.$t(
-												'index._TEXT53'));
-											setTimeout(() => {
-												this.init()
-											}, 1000)
-										}
-									});
-								}
-							}, res => {
-								this.loading = false;
-								this.$Loading.handleDestory();
-								const err = JSON.parse(JSON.stringify(res))
-								console.log(err)
-								this.$Common.errPoint(err)
-							});
-						} else if (type == 13) {
-							this.$incometcc.withdrawBase(
-								res.data.toAddress,
-								bigNumber.toString(),
-								veFee.toString(),
-								res.data.nonce,
-								bigDeadline.toString(),
-								res.data.sign,
-							).then((ret) => {
-								console.log(ret)
-								this.$Loading.handleDestory();
-								if (ret) {
-									console.log(ret)
-									this.$Request.post('app/withdrawalSuccess', {
-										nonce: res.data.nonce,
-										type: type,
-									}).then((val) => {
-										if (val.code == 200) {
-											this.$Common.showToast(this.$t(
-												'index._TEXT53'));
-											setTimeout(() => {
-												this.init()
-											}, 1000)
-										}
-									});
-								}
-							}, res => {
-								this.loading = false;
-								this.$Loading.handleDestory();
-								const err = JSON.parse(JSON.stringify(res))
-								console.log(err)
-								this.$Common.errPoint(err)
+
+								this.$nodepooltcc.withdraw(
+									res.data.toAddress,
+									bigNumber.toString(),
+									// bigKind.toString(),
+									res.data.nonce,
+									bigDeadline.toString(),
+									res.data.sign, {
+										value: ret
+									}
+								).then((ret) => {
+									this.$Loading.handleDestory();
+									if (ret) {
+										console.log(ret)
+										this.$Request.post('app/withdrawalSuccess', {
+											nonce: res.data.nonce,
+											type: type,
+										}).then((val) => {
+											if (val.code == 200) {
+												this.$Common.showToast(this.$t(
+													'index._TEXT53'));
+												setTimeout(() => {
+													this.init()
+												}, 1000)
+											}
+										});
+									}
+								}, res => {
+									this.$Loading.handleDestory();
+									this.loading = false;
+									const err = JSON.parse(JSON.stringify(res))
+									console.log(err)
+									this.$Common.errPoint(err)
+								});
 							});
 						}
 					}
-				} catch (err) {
-					console.error("❌ 提现流程出错:", err);
-					this.$Common.showToast("操作失败，请稍后重试");
-				} finally {
-					this.loading = false;
-				}
+				});
 			},
 
-			
+			calculateRemainingReward(totalReward, claimedReward, decimals = 18) {
+				try {
+					const total = ethers.BigNumber.from(totalReward);
+					const claimed = ethers.BigNumber.from(claimedReward);
+					const remaining = total.sub(claimed);
+
+					const formatted = ethers.utils.formatUnits(remaining, decimals); // 转为可读格式
+
+					return Math.floor(Number(formatted)); // 返回整数，向下取整
+				} catch (err) {
+					console.error("计算剩余奖励出错:", err);
+					return 0;
+				}
+			},
 			toFixedSafe(x) {
 				let str = x.toString();
 				if (!/e/i.test(str)) return str;
@@ -740,16 +627,8 @@
 					}
 				}, false, false);
 			},
-			getRecordAccountList() {
-				this.$Request.get('app/getRecordAccountList2', {
-				}).then((res) => {
-					if (res.code == 200) {
-						this.assetTransferRecords = res.data;
-					}
-				});
-			},
 			valueSubstr(value) {
-				return value.substr(0, 4) + '******' + value.substring(value.length - 4);
+				return value.substr(0, 3) + '****' + value.substring(value.length - 3);
 			},
 			truncateToFixed(num, fixed) {
 				const factor = Math.pow(10, fixed);
@@ -787,6 +666,180 @@
 			background-color: #36343080;
 			border-radius: 20rpx;
 			border: #FFFFFF33 2rpx solid;
+		}
+		.copy-icon {
+			width: 34rpx;
+			height: 34rpx;
+			margin-left: 18rpx;
+		}
+
+		.custom-btn {
+			width: 150rpx;
+			height: 60rpx;
+			border: 2rpx solid #6205B2;
+			border-radius: 16rpx;
+			background:
+				linear-gradient(180deg, rgba(98, 5, 178, 0.2) 0%, rgba(0, 0, 0, 10) 100%),
+				linear-gradient(180deg, rgba(98, 5, 178, 0.35) 0%, rgba(255, 185, 47, 0) 100%);
+			display: flex;
+			align-items: center;
+			/* 垂直居中 */
+			justify-content: center;
+			/* 水平居中 */
+			box-sizing: border-box;
+			/* 确保边框不会撑大宽高 */
+			color: #FFFFFF;
+			/* 假设文字为白色 */
+			font-size: 28rpx;
+			/* 推荐字号 */
+		}
+		
+		.junior-content-wrap {
+			width: 100%;
+			margin-top: 46rpx;
+			border-radius: 20rpx;
+			border: 2rpx solid #655A8980;
+			// background-image: linear-gradient(0deg, #1D2D3C, #111C2E);
+			padding: 20rpx 20rpx;
+			box-sizing: border-box;
+			margin-bottom: 42rpx;
+		
+			.lists-wrap {
+				width: 100%;
+				// padding: 0 40rpx;
+				box-sizing: border-box;
+		
+				.lists {
+					width: 100%;
+					height: 64rpx;
+					border-radius: 20rpx;
+					background: linear-gradient(0deg, #272031, #272031);
+					margin-bottom: 20rpx;
+					padding: 16rpx 24rpx;
+					box-sizing: border-box;
+					color: white;
+					font-size: 24rpx;
+					font-family: 'Open Sans';
+					font-weight: 700;
+				}
+		
+				.inp-wrap-two {
+					background: linear-gradient(0deg, #272031, #272031);
+		
+				}
+			}
+		
+			.buy-btn {
+				width: 100%;
+				height: 80rpx;
+				// background: url('../../static/trade/btnBg2.png') no-repeat;
+				// background-size: 100% 100%;
+				// margin-top: 32rpx;
+				color: #ffffff;
+				font-size: 24rpx;
+				font-family: 'Open Sans';
+				font-weight: bold;
+				border-radius: 20rpx;
+				background-color: #333333;
+			}
+		}
+
+		.gradient-panel {
+			width: 150rpx;
+			/* 自由调整 */
+			height: 52rpx;
+			/* 自由调整 */
+			border-radius: 14rpx;
+			/* 圆角要大 */
+			background: linear-gradient(90deg, #d49aff 0%, #7d28ff 100%);
+
+			/* 亮色外发光 + 底部柔和阴影 */
+			box-shadow:
+				0 8px 20px rgba(0, 0, 0, 0.3),
+				/* 底部阴影 */
+				0 0 30px rgba(180, 140, 255, 0.8);
+			/* 外发光 */
+		}
+
+		.gradient-text {
+			font-size: 28rpx;
+			font-weight: 600;
+			background: linear-gradient(160deg, #DBB1FF, #FFFFFF, #FFFFFF);
+			-webkit-background-clip: text;
+			color: transparent;
+		}
+
+
+		.pill-box {
+			width: 100%;
+
+
+			margin-top: 40rpx;
+
+			border: 4rpx solid transparent;
+			border-radius: 16rpx;
+
+			background-clip: padding-box, border-box;
+			background-origin: border-box;
+
+			background-image:
+				/* 第一层：内部背景 (保持不变) */
+				linear-gradient(180deg, #2C2237 0%, #1C1C20 100%),
+
+				/* 第二层：边框背景 (优化版) */
+				/* 解释： */
+				/* 起点: #9C7EAF (不透明紫色) */
+				/* 终点: rgba(156, 126, 175, 0) (完全透明的同色系紫色) */
+				/* 也就是把 50% 处的 transparent 换成了这个 rgba 值 */
+				linear-gradient(90deg, #553d68 0%, rgba(156, 126, 175, 0) 60%, transparent 100%);
+
+			box-shadow: 0px 20px 30px -5px rgba(0, 0, 0, 0.6);
+		}
+
+		.order-sele-wrap {
+			width: 100%;
+			// margin-top: 20rpx;
+			height: 80rpx;
+			// background: #1B2B39;
+			border-radius: 96rpx;
+			display: flex;
+			justify-content: space-between;
+
+			.order-item {
+				width: 40%;
+				height: 120rpx;
+				line-height: 120rpx;
+				text-align: center;
+				color: #FFFFFF8C;
+				font-size: 30rpx;
+				font-weight: 400;
+				position: relative;
+				cursor: pointer;
+
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: 30rpx;
+					/* 调整横条位置 */
+					left: 25%;
+					width: 50%;
+					height: 6rpx;
+					background-color: transparent;
+					border-radius: 4rpx;
+					transition: all 0.3s ease;
+				}
+			}
+
+			.order-item-in {
+				font-weight: 600;
+				color: #FFFFFF;
+				font-size: 30rpx;
+
+
+				&::after {
+					background-color: #BE74FF; // 黄色条
+				}
+			}
 		}
 
 		.vip-badge {
@@ -830,7 +883,7 @@
 
 		.flex-center {
 			display: flex;
-			justify-content: space-around;
+			justify-content: center;
 			align-items: center;
 		}
 
@@ -846,6 +899,150 @@
 			font-size: 24rpx;
 			font-weight: 400;
 			color: #ffffff99;
+		}
+
+		.trend-wraps {
+			width: 100%;
+			// background-image: linear-gradient(0deg, #1D2D3C, #111C2E);
+			border: 2rpx solid #655A8980;
+			border-radius: 20rpx;
+			margin-bottom: 46rpx;
+			min-height: 110rpx;
+			overflow: hidden;
+
+			.top-name {
+				width: 100%;
+				height: 84rpx;
+				// background: #25384D;
+				padding: 0 32rpx;
+				box-sizing: border-box;
+				color: white;
+				font-size: 28rpx;
+				font-weight: 600;
+
+				.row {
+					width: 33.33%;
+				}
+			}
+
+			.buy-coin-wrap {
+				width: 100%;
+				min-height: 248rpx;
+				margin-bottom: 16rpx;
+				padding: 36rpx 18rpx;
+				box-sizing: border-box;
+				background: none;
+				flex-wrap: wrap;
+
+				.shop-item {
+					width: 100%;
+					padding: 32rpx 24rpx;
+					margin-bottom: 10rpx;
+					box-sizing: border-box;
+					background: linear-gradient(0deg, #272031, #272031);
+					border-radius: 20rpx;
+					color: white;
+
+					.row {
+						width: 33.33%;
+					}
+				}
+			}
+		}
+		.lists2 {
+		
+			margin-top: 16rpx;
+			padding: 0 42rpx;
+			padding-right: 0;
+			box-sizing: border-box;
+			// color: #fff;
+			font-size: 28rpx;
+			width: 100%;
+			height: 64rpx;
+			border-radius: 20rpx;
+			// border-bottom: 2rpx solid rgba(255, 255, 255, 0.1);
+			color: white;
+			font-size: 24rpx;
+			font-family: 'Open Sans';
+			font-weight: 700;
+			background: linear-gradient(0deg, #272031, #272031);
+		
+			// cursor: pointer;
+			.nums {
+				color: white;
+				font-size: 24rpx;
+				font-family: 'Open Sans';
+				font-weight: 700;
+			}
+		
+			.btns {
+				width: 134rpx;
+				height: 64rpx;
+				// background: url('../../static/info/btnBg0.png') no-repeat;
+				// background-size: 100% 100%;
+				background-color: #BE74FF;
+				border-radius: 0 20rpx 20rpx 0;
+				color: white;
+				font-size: 24rpx;
+				font-family: 'Open Sans';
+				font-weight: 700;
+				margin-left: 32rpx;
+			}
+		}
+
+		.shop-wrap {
+			width: 100%;
+
+			.shop-item {
+				width: 100%;
+				padding: 20rpx 20rpx;
+				box-sizing: border-box;
+				margin-bottom: 32rpx;
+				// background: linear-gradient(0deg, #17273F, #132034);
+				// box-shadow: 0 0 8rpx 0 #F2F2F2;
+				// border: 2rpx solid #F2F2F2;
+				border-radius: 20rpx;
+
+				.head-text {
+					color: white;
+					font-size: 30rpx;
+					font-weight: bold;
+					margin-bottom: 8rpx;
+
+					.head-icon {
+						width: 48rpx;
+						height: 48rpx;
+						margin-right: 12rpx;
+					}
+				}
+
+				.lists {
+					width: 100%;
+					height: 98rpx;
+					border-bottom: 2rpx solid rgba(255, 255, 255, 0.1);
+					color: white;
+					font-size: 28rpx;
+
+					.num {
+						color: #BE74FF;
+						font-size: 36rpx;
+						font-weight: bold;
+						margin-right: 12rpx;
+					}
+
+					.coins {
+						width: 46rpx;
+						height: 46rpx;
+					}
+
+					.title-num {
+						color: #BE74FF;
+						font-size: 28rpx;
+						font-weight: bold;
+						margin-right: 12rpx;
+					}
+				}
+			}
 		}
 
 

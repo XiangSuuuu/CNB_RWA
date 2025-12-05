@@ -67,7 +67,7 @@
 		position: absolute;
 		width: 40rpx;
 		height: 40rpx;
-		top: 28rpx;
+		top: 100rpx;
 		right: 24rpx;
 		z-index: 10;
 	}

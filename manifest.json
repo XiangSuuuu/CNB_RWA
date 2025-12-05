@@ -1,5 +1,5 @@
 {
-    "name" : "VBO",
+    "name" : "CNE",
     "appid" : "__UNI__4CAF11F",
     "description" : "wx0f15e807a03df24a",
     "versionName" : "1.0.0",
@@ -81,7 +81,7 @@
             },
             "https" : false
         },
-        "title" : "VBO",
+        "title" : "CNE",
         "domain" : "http://dapp.safu.vip/",
         "router" : {
             "base" : "./"

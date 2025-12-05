@@ -106,13 +106,15 @@ input {
   justify-content: center;
 }
 .min-btn {
-  height: 60rpx;
-  line-height: 60rpx;
+  height: 48rpx;
+  width: 124rpx;
+  /* line-height: 60rpx; */
   /* background: linear-gradient(45deg, #35FFAB 0%, #0095E4 100%); */
   border-radius: 20rpx;
-  background-color: #333333;
-  color: #FFFFFF;
+  background-color: #C889FF33;
+  color: #C889FF;
   font-size: 24rpx;
+  font-family: 500;
   padding: 0 20rpx;
   font-weight: bold;
   box-sizing: border-box;

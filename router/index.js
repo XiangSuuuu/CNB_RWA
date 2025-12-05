@@ -8,6 +8,12 @@ const router = createRouter({
 	    vueRouterDev:true,  //完全使用vue-router开发 默认 false  
     },
 	routes:[
+		// {
+		// 	path:'/',
+		// 	name:'',
+		// 	component:()=>import('@/pages/index/index.vue'),
+		// 	meta:{keepAlive: false},
+		// },
 		{
 			path:'/',
 			name:'',
@@ -15,45 +21,21 @@ const router = createRouter({
 			meta:{keepAlive: false},
 		},
 		{
-			path:'/index',
-			name:'index',
-			component:()=>import('@/pages/index/index'),
+			path:'/placeOrder',
+			name:'placeOrder',
+			component:()=>import('@/pages/index/placeOrder.vue'),
 			meta:{keepAlive: false},
 		},
 		{
-			path:'/agreement',
-			name:'agreement',
-			component:()=>import('@/pages/agreement_order/agreement.vue'),
+			path:'/addAddress',
+			name:'addAddress',
+			component:()=>import('@/pages/index/addAddress.vue'),
 			meta:{keepAlive: false},
 		},
 		{
-			path:'/subscription',
-			name:'subscription',
-			component:()=>import('@/pages/agreement_subscription/agreement_subscription.vue'),
-			meta:{keepAlive: false},
-		},
-		{
-			path:'/subscription_order',
-			name:'subscription_order',
-			component:()=>import('@/pages/agreement_subscription/agreement_subscription_order.vue'),
-			meta:{keepAlive: false},
-		},
-		{
-			path:'/power_summary',
-			name:'power_summary',
-			component:()=>import('@/pages/power_summary/power_summary.vue'),
-			meta:{keepAlive: false},
-		},
-		{
-			path:'/fee_summary',
-			name:'fee_summary',
-			component:()=>import('@/pages/fee_summary/fee_summary.vue'),
-			meta:{keepAlive: false},
-		},
-		{
-			path:'/commission',
-			name:'commission',
-			component:()=>import('@/pages/commission/commission.vue'),
+			path:'/ecologicalRights',
+			name:'ecologicalRights',
+			component:()=>import('@/pages/ecological_rights/ecological_rights.vue'),
 			meta:{keepAlive: false},
 		},
 		{
@@ -62,7 +44,30 @@ const router = createRouter({
 			component:()=>import('@/pages/mine/mine.vue'),
 			meta:{keepAlive: false},
 		},
-		
+		{
+			path:'/tradingHall',
+			name:'tradingHall',
+			component:()=>import('@/pages/trading_hall/trading_hall.vue'),
+			meta:{keepAlive: false},
+		},
+		{
+			path:'/addressList',
+			name:'addressList',
+			component:()=>import('@/pages/index/addressList.vue'),
+			meta:{keepAlive: false},
+		},
+		{
+			path:'/storeOrder',
+			name:'storeOrder',
+			component:()=>import('@/pages/index/storeOrder.vue'),
+			meta:{keepAlive: false},
+		},
+		{
+			path:'/tradeOrder',
+			name:'tradeOrder',
+			component:()=>import('@/pages/trading_hall/tradeOrder.vue'),
+			meta:{keepAlive: false},
+		},
 	]
 });
 //全局路由前置守卫

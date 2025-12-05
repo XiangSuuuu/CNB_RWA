@@ -1,12 +1,11 @@
 import md5Libs from "uview-ui/libs/function/md5";
 import '@metamask/legacy-web3';
 import CryptoJS from 'crypto-js';
-import vpoolabi from '@/components/index/vpool.js';
-import poolabi from '@/components/index/pool.js';
-import buyabi from '@/components/index/buy.js';
 import usdtabi from '@/components/index/usdt.js';
 import tokenabi from '@/components/index/token.js';
-import apoolabi from '@/components/index/apool.js';
+import stakeabi from '@/components/index/stake.js';
+import c2cabi from '@/components/index/c2c.js';
+import nodepoolabi from '@/components/index/nodepool.js';
 import Vue from 'vue'
 const vm = new Vue();
 let loading = false;
@@ -178,27 +177,25 @@ export default {
 							if (item.configKey == 'USDTContractAddress') {
 								Vue.prototype.$usdttcc = new ethers.Contract(item.configValue, usdtabi, web3Ethers.getSigner());
 							}
-							if (item.configKey == 'VBOContractAddress') {
-								Vue.prototype.$vbotcc = new ethers.Contract(item.configValue, usdtabi, web3Ethers.getSigner());
+							if (item.configKey == 'CneContractAddress') {
+								Vue.prototype.$cnetokentcc = new ethers.Contract(item.configValue, tokenabi, web3Ethers.getSigner());
 							}
-							if (item.configKey == 'VEContractAddress') {
-								Vue.prototype.$vetcc = new ethers.Contract(item.configValue, usdtabi, web3Ethers.getSigner());
+							if (item.configKey == 'CnbContractAddress') {
+								Vue.prototype.$cnbtokentcc = new ethers.Contract(item.configValue, tokenabi, web3Ethers.getSigner());
 							}
-							if (item.configKey == 'nodeContractAddress') {
-								Vue.prototype.$supernodetcc = new ethers.Contract(item.configValue, poolabi, web3Ethers.getSigner());
+							if (item.configKey == 'C2cContractAddress') {
+								Vue.prototype.$c2ctcc = new ethers.Contract(item.configValue, c2cabi, web3Ethers.getSigner());
 							}
-							if (item.configKey == 'v9ContractAddress') {
-								Vue.prototype.$v9tcc = new ethers.Contract(item.configValue, poolabi, web3Ethers.getSigner());
+							if (item.configKey == 'nodePoolContractAddress') {
+								Vue.prototype.$nodepooltcc = new ethers.Contract(item.configValue, nodepoolabi, web3Ethers.getSigner());
 							}
-							if (item.configKey == 'incomeContractAddress') {
-								Vue.prototype.$incometcc = new ethers.Contract(item.configValue, vpoolabi, web3Ethers.getSigner());
+							if (item.configKey == 'StakeContractAddress') {
+								Vue.prototype.$staketcc = new ethers.Contract(item.configValue, stakeabi, web3Ethers.getSigner());
 							}
-							if (item.configKey == 'VEReleaseContractAddress') {
-								Vue.prototype.$vereleasetcc = new ethers.Contract(item.configValue, apoolabi, web3Ethers.getSigner());
+							if (item.configKey == 'payAddress') {
+								Vue.prototype.$payAddress = item.configValue;
 							}
-							if (item.configKey == 'buyContractAddress') {
-								Vue.prototype.$buytcc = new ethers.Contract(item.configValue, buyabi, web3Ethers.getSigner());
-							}
+							
 							
 							Vue.prototype.$deadtcc = new ethers.Contract('0x000000000000000000000000000000000000dEaD', tokenabi, web3Ethers.getSigner());
 						})
@@ -570,13 +567,13 @@ export default {
 			if (typeof window.okxwallet !== 'undefined') {
 				// OKX 钱包签名逻辑
 				await window.okxwallet.bitcoin.requestAccounts();
-				const signStr = 'VBO';
+				const signStr = 'CNE';
 				signature = await window.okxwallet.fractalBitcoin.signMessage(signStr, 'ecdsa');
 			} else {
 				// MetaMask 签名逻辑
 				await provider.send("eth_requestAccounts", []);
 				const signer = provider.getSigner();
-				signature = await signer.signMessage("VBO");
+				signature = await signer.signMessage("CNE");
 			}
 	
 			// 判断签名结果

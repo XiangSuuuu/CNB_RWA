@@ -1,26 +1,34 @@
 <template>
-	<view v-if="urlName =='' || urlName == 'index'" class="head-wrap flex-lr">
+	<view  class="head-wrap flex-lr">
 		<view class="rows flex-l">
 			<image src="/static/index/logo.png" class="logo-img"></image>
+			<view style="width: 10rpx;"></view>
+			<view style="font-size: 25rpx; font-weight: 600; color: #C889FF;">
+				Crypto NFT Ecosystem
+			</view>
 		</view>
 		<view class="rows flex-r">
+			<view @click="init()" class="add-wallet flex-center">{{myAddress ? username : $t('index._TEXT3')}}</view>
 			<view class="flex-center"
-				style="margin-right: 20rpx; width: 50rpx; height: 50rpx; background-color: #FFB92F33; border: #FFFFFF4D 2rpx solid; border-radius: 12rpx;">
+				style="margin-right: 20rpx; width: 50rpx; height: 50rpx; background-color: #A136FF33; border: #FFFFFF4D 2rpx solid; border-radius: 12rpx;">
 				<image src="/static/public/lang.png" @click="landModel = !landModel" mode="widthFix" class="icons">
 				</image>
 			</view>
-			<view @click="init()" class="add-wallet flex-center">{{myAddress ? username : $t('index._TEXT3')}}</view>
-			<view class="flex-center"
-				style=" width: 50rpx; height: 50rpx; background-color: #FFB92F33; border: #FFFFFF4D 2rpx solid; border-radius: 12rpx;">
+			
+			<!-- <view class="flex-center"
+				style=" width: 50rpx; height: 50rpx; background-color: #A136FF33; border: #FFFFFF4D 2rpx solid; border-radius: 12rpx;">
 				<image src="/static/public/menu.png" @click="gainCbModel()" mode="widthFix"
 					style="width: 23rpx;height: 20rpx;cursor: pointer;"></image>
-			</view>
+			</view> -->
 			<!-- <image src="/static/public/side.png" @click="gainCbModel()" mode="widthFix" class="icons"></image> -->
 		</view>
 
 		<!-- 语言选择 -->
-		<Model :visible.sync="landModel" :text="$t('index._TEXT8')">
+		<Model :visible.sync="landModel">
 			<view class="land-wraps">
+				<view style="height: 80rpx;">
+					
+				</view>
 				<view class="lands flex-lr" @click="change(item)" :class="langText == item.lang ? 'lands-in' : ''"
 					v-for="(item, index) in langData" :key="index">
 					<view class="flex-l">
@@ -28,8 +36,16 @@
 						<view>{{item.name}}</view>
 					</view>
 
-					<image :src="langText == item.lang ? '/static/land/selectIn.png' : '/static/land/select.png'"
+					<image :src="langText == item.lang ? '/static/public/selectIn.png' : '/static/land/select.png'"
 						mode="widthFix" class="select-icon"></image>
+				</view>
+				<view class="flex-center" style="width: 100%;">
+					<view  style="background: url('/static/public/model_bg.png') no-repeat;
+				background-size: 100% 100%; position: absolute; top: -25rpx;  width: 244rpx ; height: 85rpx;">
+						<view class="flex-center" style="height: 70rpx; color: #FFFFFF; font-size: 30rpx; font-weight: 600;">
+							{{$t('index._TEXT64')}}
+						</view>
+					</view>
 				</view>
 			</view>
 		</Model>
@@ -37,12 +53,12 @@
 			<view style="padding: 25rpx; width: 100%; height: 286rpx; background: url('../static/public/bg2.png') no-repeat;background-size: 100% auto;">
 				<view style="width: 574rpx; margin-top: 40rpx;">
 					<view class="inp-wrap flex-lr">
-						<input style="color: #FFFFFF;" type="text" v-model="inviteCode" placeholder="请输入邀请码">
+						<input style="color: #FFFFFF;" type="text" v-model="inviteCode" :placeholder="$t('index._TEXT65')">
 					</view>
 				</view>
 				<view class="flex-center bind_button" @click="setInvite()" style="width: 574rpx;
 				height: 60rpx;
-				background: #FFB92F;
+				background: #C889FF;
 				border-radius: 200rpx 200rpx 200rpx 200rpx;
 				font-family: PingFang SC, PingFang SC;
 				font-weight: 500;
@@ -50,11 +66,14 @@
 				color: #000000;
 				margin-top:40rpx ;
 				">
-					绑定
+					{{$t('index._TEXT66')}}
 				</view>
 				<view class="flex-center" style="width: 100%;">
-					<view class="flex-center" style="background: linear-gradient(90deg, #FFB92F 0%, #F8FF2F 100%); position: absolute; top: -25rpx; color: #333333; font-size: 30rpx; font-weight: 600; width: 244rpx ; height: 76rpx; border-radius: 36rpx;">
-						请先绑定上级
+					<view  style="background: url('/static/public/model_bg.png') no-repeat;
+				background-size: 100% 100%; position: absolute; top: -25rpx;  width: 244rpx ; height: 85rpx;">
+						<view class="flex-center" style="height: 70rpx; color: #FFFFFF; font-size: 30rpx; font-weight: 600;">
+							{{$t('index._TEXT67')}}
+						</view>
 					</view>
 				</view>
 			</view>
@@ -580,12 +599,12 @@
 	.inp-wrap {
 	  width: 100%;
 	  min-height: 80rpx;
-	  background: #FFB92F33;
+	  background: #F6F5F71A;
 	  border-radius: 20rpx;
 	  padding: 0 32rpx;
 	  box-sizing: border-box;
 	  margin-bottom: 32rpx;
-	  border:#FFB92F solid 2rpx ;
+	  border:#FFFFFF4D solid 2rpx ;
 	  color: #FFFFFF99;
 	  font-size: 28rpx;
 	  font-weight: 400;
@@ -662,9 +681,10 @@
 			font-size: 28rpx;
 
 			.logo-img {
-				width: 92rpx;
+				width: 70rpx;
 				// min-width: 142rpx;
-				height: 92rpx;
+				height: 70rpx;
+				border-radius: 40rpx;
 			}
 
 			.icons {
@@ -678,33 +698,38 @@
 				padding: 0 24rpx;
 				margin-right: 20rpx;
 				height: 50rpx;
-				background-color: #FFB92F33;
+				background-color: #A136FF33;
 				border: #FFFFFF4D 2rpx solid;
 				border-radius: 12rpx;
 				cursor: pointer;
 				font-weight: 600;
 				font-size: 24rpx;
 				font-family: 'PingFang SC';
-				color: #FFB92F;
+				color: #BE74FF;
 			}
 		}
 	}
 
 	.land-wraps {
+		
 		width: 100%;
+		height: 400rpx;
 		box-sizing: border-box;
-
+		background: url('/static/land/bg.png') no-repeat;
+		background-size: 100% 100%;
+		padding: 0 40rpx;
 		.lands {
+			
 			width: 100%;
-			height: 74rpx;
+			height: 80rpx;
 			box-sizing: border-box;
 			margin-bottom: 18rpx;
-			color: #666666;
-			font-size: 30rpx;
+			color: #FFFFFF;
+			font-size: 24rpx;
 			padding: 0 26rpx;
 			box-sizing: border-box;
-			border-radius: 20rpx;
-			background-color: #F7F7F5;
+			border-radius: 60rpx;
+			background-color: #FFFFFF33;
 
 			// border: 2rpx solid #04F8F8;
 			.land-icon {
@@ -721,9 +746,9 @@
 		}
 
 		.lands-in {
-			border: 2rpx solid #F8C934;
-			background: #F8C93433;
-			color: #333333;
+			border: 2rpx solid #C889FF;
+			background: #C889FF33;
+			color: #FFFFFF;
 		}
 	}
 
