@@ -1,120 +1,105 @@
 <template>
 	<view class="pages">
-		<image src="/static/index/bg0.png"
-			style="position: absolute; left: 0; top: 80rpx; width: 100%; height: 1100rpx; z-index: 0; object-fit: cover;">
+		<image src="/static/ecological_rights/bg0.png"
+			style="position: absolute; left: 0; top: 0; width: 100%; height: 1100rpx; z-index: 0; object-fit: cover;">
 		</image>
+		<view style="margin-top: 240rpx; padding: 0 40rpx; width: 100%; position: relative; z-index: 1;">
+			<view
+				style="padding: 40rpx; width: 100%; height: 244rpx; background: url('../../static/ecological_rights/bg3.png') no-repeat; background-size: 100% 100%;">
+				<image :src="cardList[current].image"
+					style="width: 440rpx; height: 364rpx; position: absolute; right: 0; top: -100rpx; z-index: 0; object-fit: cover;">
+				</image>
 
-		<image src="/static/index/bg3.png"
-			style="position: absolute; left: 0; top: 1000rpx; width: 100%; height: 652rpx; z-index: 0; object-fit: cover;">
-		</image>
-
-		<view class="content" style="position: relative; z-index: 1;">
-			<view class="flex-center" style="margin-top: 212rpx; font-size: 60rpx; font-weight: 400; font-family: RubikGlitch-Regular;
-	             background: linear-gradient(180deg, #FFFFFF, #FFB92F);
-	             -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-				VERIBRIDGE ONE
-			</view>
-			<view class="flex-center" style="margin-top: 42rpx;">
-				<view class="flex-lr"
-					style="padding:4rpx 10rpx ; border-radius: 24rpx; width: 428rpx; height: 52rpx; backdrop-filter: 8rpx; background-color: #FFFFFF38;">
-					<view class="flex-center"
-						style="color: #060503; font-size:29rpx ; font-weight: 400; font-family: UnboundedSans-Regular;  width: 100rpx; height: 42rpx;border-radius: 20rpx; background-color: #FFB92F;">
-						VBO
-					</view>
-					<view style="font-size: 26rpx; font-weight: 400; ">
-						VeroEx平台原生功能性代币
-					</view>
-				</view>
-			</view>
-			<view class="flex-lr" style="margin-top: 334rpx;">
-				<view
-					style="padding: 25rpx 25rpx; width:342rpx; height: 142rpx; background: url('../../static/index/bg1.png') no-repeat; background-size: 100% 100%;">
-					<view style="color: #FFFFFFCC; font-size: 24rpx; font-weight: 400;" class="flex-center">
-						所属公链
-					</view>
-					<view style=" color: #FFFFFFCC; font-size: 28rpx; font-weight: 400;" class="flex-center">
-						VeroEx Mainnet
-					</view>
-				</view>
-				<view
-					style="padding: 25rpx 25rpx; width:342rpx; height: 142rpx; background: url('../../static/index/bg1.png') no-repeat; background-size: 100% 100%;">
-					<view style="color: #FFFFFFCC;  font-size: 24rpx; font-weight: 400;" class="flex-center">
-						代币总量
-					</view>
-					<view style="font-size: 28rpx; font-weight: 400;" class="flex-center">
-						10亿枚VBO
-					</view>
-				</view>
-			</view>
-			<view class="flex-lr" style="margin-top: 8rpx;">
-				<view
-					style="padding: 25rpx 25rpx; width:342rpx; height: 142rpx; background: url('../../static/index/bg1.png') no-repeat; background-size: 100% 100%;">
-					<view style="color: #FFFFFFCC;  font-size: 24rpx; font-weight: 400;" class="flex-center">
-						极致通缩
-					</view>
-					<view style="font-size: 28rpx; font-weight: 400;" class="flex-center">
-						1000倍
-					</view>
-				</view>
-				<view
-					style="padding: 25rpx 25rpx; width:342rpx; height: 142rpx; background: url('../../static/index/bg1.png') no-repeat; background-size: 100% 100%;">
-					<view style="color: #FFFFFFCC;  font-size: 24rpx; font-weight: 400;" class="flex-center">
-						最终流通总量
-					</view>
-					<view style="font-size: 28rpx; font-weight: 400;" class="flex-center">
-						100万枚VBO
-					</view>
-				</view>
-			</view>
-			<view style="width: 100%; margin-top: 80rpx;" class="flex-center">
-				<image style="width: 36rpx; height: 86rpx; " src="/static/index/bg4.png"></image>
-			</view>
-			<view style="width: 100%; margin-top: 86rpx;" class="flex-center">
-				<view class="flex-center"
-					style="font-size: 26rpx; font-weight: 600; width: 264rpx; height: 56rpx; background: url('../../static/index/bg2.png') no-repeat; background-size: 100% 100%;">
-					VBO代币分配机制
-				</view>
-			</view>
-			<view class="card flex-l" style="padding: 40rpx 40rpx; width: 100%; height: 152rpx; margin-top: 68rpx;">
-				<image src="/static/index/icon0.png" style="width: 72rpx; height: 72rpx; margin-right: 24rpx;"></image>
-				<view >
-					<view class="flex-l">
-						<view style="font-size: 28rpx; font-weight: 400; margin-right: 12rpx;">
-							挖矿
-						</view>
-						<view class="flex-center" style="margin-right: 12rpx; color: #FFB92F; font-size: 24rpx; font-weight: 400; padding: 6rpx; background-color: #FFB92F33; border: #FFB92F 1rpx solid; border-radius: 26rpx;">
-							占比:99%
-						</view>
-						<view class="flex-center" style="color: #FFB92F; font-size: 24rpx; font-weight: 400; padding: 6rpx; background-color: #FFB92F33; border: #FFB92F 1rpx solid; border-radius: 26rpx;">
-							数量:990,000,000VBO
-						</view>
-					</view>
-					<view style="height: 16rpx;"></view>
-					<view style="font-size: 24rpx; font-weight: 400; color: #FFFFFFCC;">
-						99%通过POB挖矿产出
-					</view>
-				</view>
-			</view>
-			<view class="card flex-l" style="padding: 40rpx 40rpx; width: 100%; height: 180rpx; margin-top: 48rpx;">
-			<image src="/static/index/icon1.png" style="width: 72rpx; height: 72rpx; margin-right: 24rpx;"></image>
-			<view style="width: 85%;">
 				<view class="flex-l">
-					<view style="font-size: 28rpx; font-weight: 400; margin-right: 12rpx;">
-						创世流动性
+					<view style="font-size: 32rpx; font-weight: 700; color: #FFFFFF;">
+						{{ cardList[current].name }}
 					</view>
-					<view class="flex-center" style="margin-right: 12rpx; color: #FFB92F; font-size: 24rpx; font-weight: 400; padding: 6rpx; background-color: #FFB92F33; border: #FFB92F 1rpx solid; border-radius: 26rpx;">
-						占比:1%
-					</view>
-					<view class="flex-center" style="color: #FFB92F; font-size: 24rpx; font-weight: 400; padding: 6rpx; background-color: #FFB92F33; border: #FFB92F 1rpx solid; border-radius: 26rpx;">
-						数量:10,000,000VBO
+					<view style="font-size: 24rpx; font-weight: 400;color: #FFFFFF;">
+						（共计{{ cardList[current].totalCount }}）
 					</view>
 				</view>
-				<view style="height: 16rpx;"></view>
-				<view style=" font-size: 24rpx; font-weight: 400; color: #FFFFFFCC;">
-					10,000,000VBO将用于创世流动性建设
+				<view style="font-size: 48rpx; font-weight: 700;" :style="{ color: cardList[current].color }">
+				    {{ cardList[current].price }}
 				</view>
 			</view>
+		</view>
+		<view
+			style="padding: 60rpx; position: relative; top: -60rpx; z-index: 1; width: 100%; height: 762rpx; background: url('../../static/ecological_rights/bg1.png') no-repeat; background-size: 100% 100%;">
+			<view class="flex-lr">
+				<view class="flex-l">
+					<image src="/static/ecological_rights/icon0.png"
+						style="margin-right: 32rpx; width: 48rpx; height: 48rpx;"></image>
+					<view style="font-weight: 400; font-size: 28rpx; color: #FFFFFF;">
+						每天释放
+					</view>
+				</view>
+				<view class="flex-r" style="font-size: 28rpx; font-weight: 700; color: #FFFFFF;">
+					{{ cardList[current].dailyRelease }}
+				</view>
 			</view>
+			<view style="margin: 20rpx 0; width: 100%; height: 4rpx; background-color: #655A8933;"></view>
+			<view class="flex-lr">
+				<view class="flex-l">
+					<image src="/static/ecological_rights/icon1.png"
+						style="margin-right: 32rpx; width: 48rpx; height: 48rpx;"></image>
+					<view style="font-weight: 400; font-size: 28rpx; color: #FFFFFF;">
+						周期
+					</view>
+				</view>
+				<view class="flex-r" style="font-size: 28rpx; font-weight: 700; color: #FFFFFF;">
+					{{ cardList[current].cycle }}
+				</view>
+			</view>
+			<view style="margin: 20rpx 0; width: 100%; height: 4rpx; background-color: #655A8933;"></view>
+			<view class="flex-lr">
+				<view class="flex-l">
+					<image src="/static/ecological_rights/icon2.png"
+						style="margin-right: 32rpx; width: 48rpx; height: 48rpx;"></image>
+					<view style="font-weight: 400; font-size: 28rpx; color: #FFFFFF;">
+						购买数量
+					</view>
+				</view>
+				<view class="flex-r" style="font-size: 28rpx; font-weight: 700; color: #FFFFFF;">
+					{{ cardList[current].limit }}
+				</view>
+			</view>
+			<view style="margin: 20rpx 0; width: 100%; height: 4rpx; background-color: #655A8933;"></view>
+			<view class="flex-lr">
+				<view class="flex-l">
+					<image src="/static/ecological_rights/icon3.png"
+						style="margin-right: 32rpx; width: 48rpx; height: 48rpx;"></image>
+					<view style="font-weight: 400; font-size: 28rpx; color: #FFFFFF;">
+						复购产品
+					</view>
+				</view>
+				<view class="flex-r" style="font-size: 28rpx; font-weight: 700; color: #FFFFFF;">
+					{{ cardList[current].discount }}
+				</view>
+			</view>
+			<view style="margin: 20rpx 0; width: 100%; height: 4rpx; background-color: #655A8933;"></view>
+
+			<view class="flex-center" style="width: 100%; margin-top: 80rpx;">
+				<view class="flex-lr" style="width: 358rpx; height: 48rpx;">
+					<view @click="gainCurrent(0)" class="flex-center"
+						style="font-size: 24rpx; font-weight: 400rpx; color: #FFFFFF; width: 160rpx; height: 48rpx; border-radius: 6rpx; background-color: #FFFFFF38;">
+						上一个
+					</view>
+					<view @click="gainCurrent(1)" class="flex-center"
+						style="font-size: 24rpx; font-weight: 400rpx; color: #FFFFFF; width: 160rpx; height: 48rpx; border-radius: 6rpx; background-color: #FFFFFF38;">
+						下一个
+					</view>
+				</view>
+			</view>
+			<view class="flex-center gradient-panel"
+				style="margin-top: 96rpx; font-size: 28rpx; font-weight: 600; color: #FFFFFF;">
+				购买规则
+			</view>
+			<view class="gradient-text" style="margin-top: 10rpx;">
+				V0购买500以下权益卡；V1购买1000以下权益卡<br>
+				V2购买5000以下权益卡；V3购买10000以下权益卡<br>
+				*生态权益每使用90天，释放周期增加6天。
+			</view>
+
 		</view>
 
 	</view>
@@ -139,50 +124,85 @@
 		},
 		data() {
 			return {
-				gridItem: [{
-						text: this.$t('index._TEXT8'),
-						url: 'dashboard',
-						icon: "/static/index/dashboard.png"
+				current: 0, // 当前选中的索引
+
+				// 定义卡片数据列表
+				cardList: [{
+						name: '体验卡', // V1
+						totalCount: '30万个',
+						price: '10.0000',
+						dailyRelease: '0.05枚',
+						cycle: '40天',
+						limit: '10个',
+						discount: '9折',
+						// 假设 V1 图片路径如下，请根据实际文件名修改
+						image: '/static/ecological_rights/v1.png',
+						color: '#DBB9F8'
 					},
 					{
-						text: this.$t('index._TEXT9'),
-						url: 'notice',
-						icon: "/static/index/notice.png"
+						name: '白银卡', // 示例 V2
+						totalCount: '2万个',
+						price: '100.0000',
+						dailyRelease: '0.5枚',
+						cycle: '40天',
+						limit: '6个(权益值1)',
+						discount: '8折',
+						image: '/static/ecological_rights/v2.png' ,// 替换为你的V2图片
+						color: '#DBDBDB'
 					},
 					{
-						text: this.$t('index._TEXT114'),
-						url: 'info',
-						icon: "/static/index/customer service.png"
+						name: '黄金卡', // 示例 V3
+						totalCount: '2万个',
+						price: '500.0000',
+						dailyRelease: '3.125枚',
+						cycle: '40天',
+						limit: '4个(权益值5)',
+						discount: '7折',
+						image: '/static/ecological_rights/v3.png' ,// 替换为你的V3图片
+						color: '#F9E992'
 					},
+					{
+						name: '铂金卡', // 示例 V3
+						totalCount: '1千个',
+						price: '1000.0000',
+						dailyRelease: '7.5枚',
+						cycle: '40天',
+						limit: '3个(权益值10)',
+						discount: '7折',
+						image: '/static/ecological_rights/v4.png' ,// 替换为你的V3图片
+						color: '#F9BB92'
+					},
+					{
+						name: '黑金卡', // 示例 V3
+						totalCount: '200个',
+						price: '5000.0000',
+						dailyRelease: '43.75枚',
+						cycle: '40天',
+						limit: '2个(权益值50)',
+						discount: '6.5折',
+						image: '/static/ecological_rights/v5.png' ,// 替换为你的V3图片
+						color: '#F0FACC'
+					},
+					{
+						name: '黑金卡', // 示例 V3
+						totalCount: '100个',
+						price: '10000.0000',
+						dailyRelease: '100枚',
+						cycle: '40天',
+						limit: '1个(权益值100)',
+						discount: '6折',
+						image: '/static/ecological_rights/v6.png' ,// 替换为你的V3图片
+						color: '#CCEAFA'
+					},
+					// 可以继续添加更多类型...
 				],
 				loading: false,
 				coinLoading: false,
-				setPws: false,
-				loginPws: false,
 				unitNum: 10 ** 18,
 				current: 0,
-				activeModel: false,
-				inviteCode: '',
-				targetDate: 300000000, //剩余时间
-				timer: null, // 用于存储定时器的ID
-				days: 0,
-				hours: 0,
-				minutes: 0,
-				seconds: 0,
-				configData: null,
-				totalIssuance: 0, //发行总量
-				xyNum: 0,
-				xyNum1: 0,
-				pledgeWrap: null,
-				pledgeData: [],
-				zBalance: 0, //代币合约地址
-				deadBalance: 0, //dead合约地址
 				approveNum: 0, //当前选择币种授权的余额
 				is_approve: false, //是否授权
-				sqAddress: '', //授权地址
-				password: '',
-				password1: '',
-				servicerErrorModel: false,
+
 			}
 		},
 		watch: {
@@ -252,112 +272,26 @@
 			skipPageUrl(url) {
 				window.open(url)
 			},
-			onSwiperChange(e) {
-				// 通过 e.detail.current 获取当前所在的 swiper-item 索引
-				console.log('当前索引:', e.detail.current);
-				this.current = e.detail.current;
-			},
+
 
 			gainCurrent(ix) {
+				const len = this.cardList.length;
 				if (ix) {
-					if (this.current >= (this.pledgeData.length - 1)) {
-						this.current = 0
+					// 下一个
+					if (this.current >= (len - 1)) {
+						this.current = 0;
 					} else {
 						this.current += 1;
 					}
 				} else {
+					// 上一个
 					if (this.current == 0) {
-						this.current = (this.pledgeData.length - 1)
+						this.current = len - 1;
 					} else {
 						this.current = Number(this.current) - 1;
 					}
 				}
 			},
-
-			//设置邀请码
-			setInvite() {
-				if (!this.inviteCode) return this.$Common.showToast(this.$t('index._TEXT10'));
-				if (!uni.getStorageSync('accessToken')) return;
-				if (this.loading) return;
-				this.loading = true;
-				this.$Request.post('app/user/setInviteCode', {
-					inviteCode: this.$Common.addrEncrypt(this.inviteCode)
-				}).then((res) => {
-					this.loading = false;
-					if (res.code == 200) {
-						uni.setStorageSync('inviteCode', null);
-						this.activeModel = false
-						this.gainUserData();
-					}
-				});
-			},
-
-			//获取配置信息
-			getConfigs() {
-				// this.$Request.get('app/pledgeType', {}).then((res) => {
-				// 	if (res.code == 200) {
-				// 		this.pledgeWrap = res.data;
-				// 		this.pledgeData = res.data.list;
-				// 		this.targetDate = res.data.nextTime;
-				// 		this.xyNum1 = res.data.existingNum;
-				// 		if (this.targetDate) {
-				// 			clearInterval(this.timer);
-				// 			this.startCountdown();
-				// 		}
-				// 	}
-				// });
-				this.$Request.get('app/getConfig', {}).then((res) => {
-					console.log(res)
-					if (res.code == 200) {
-						this.configData = res.data.sysConfigs;
-						this.configData.forEach((item) => {
-							if (item.configKey == 'totalIssuance') {
-								this.totalIssuance = item.configValue;
-							}
-							if (item.configKey == 'Stake') {
-								this.sqAddress = item.configValue;
-							}
-						})
-						// this.getAmount(); //获取余额
-					} else {
-						this.servicerErrorModel = !this.servicerErrorModel;
-					}
-				});
-			},
-
-			// 获取币数量
-			// async getAmount() {
-			// 	try {
-			// 		console.log("this.$deadtcc" + this.$deadtcc)
-			// 		this.$deadtcc.balanceOf(this.myAddress).then((res) => {
-			// 			if (res && res._hex) {
-			// 				let num = parseInt(res._hex);
-			// 				this.deadBalance = Number((num / this.unitNum).toFixed(6));
-			// 			}
-			// 		});
-			// 		this.$tokentcc.balanceOf(this.myAddress).then((res) => {
-			// 			if (res && res._hex) {
-			// 				let num = parseInt(res._hex);
-			// 				this.zBalance = Number((num / this.unitNum).toFixed(6));
-			// 			}
-			// 		});
-			// 		this.$tokentcc.totalSupply().then((res) => {
-			// 			if (res && res._hex) {
-			// 				let num = parseInt(res._hex);
-			// 				this.xyNum = num / this.unitNum;
-			// 				console.log('现有：' + this.xyNum)
-
-			// 			}
-			// 		});
-			// 		this.approveMarts(); //是否授权
-			// 	} catch (e) {
-			// 		console.log(e);
-			// 		setTimeout(() => {
-			// 			this.getAmount();
-			// 		}, 1500)
-			// 		//TODO handle the exception
-			// 	}
-			// },
 
 			//是否授权
 			async approveMarts(is = 0) {
@@ -591,19 +525,32 @@
 	.pages {
 		padding: 0 0;
 
-		.content {
-			padding: 0 40rpx;
+		.gradient-panel {
+			width: 150rpx;
+			/* 自由调整 */
+			height: 52rpx;
+			/* 自由调整 */
+			border-radius: 14rpx;
+			/* 圆角要大 */
+			background: linear-gradient(90deg, #d49aff 0%, #7d28ff 100%);
+
+			/* 亮色外发光 + 底部柔和阴影 */
+			box-shadow:
+				0 8px 20px rgba(0, 0, 0, 0.3),
+				/* 底部阴影 */
+				0 0 30px rgba(180, 140, 255, 0.8);
+			/* 外发光 */
 		}
-		.card {
-		  
-		  border-radius: 20px;
-		  background: linear-gradient(
-		      180deg,
-		      // #544528 0%,     /* 顶部柔金亮点 */
-		      #4f4022 0%,    /* 过渡色——偏暗棕 */
-		      #1b1b1b 100%    /* 底部深灰 */
-		    );
-		  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+		.gradient-text {
+			font-size: 24rpx;
+			font-weight: 400;
+			background: linear-gradient(160deg, #DBB1FF, #FFFFFF, #FFFFFF);
+			-webkit-background-clip: text;
+			color: transparent;
 		}
+
+
+
 	}
 </style>

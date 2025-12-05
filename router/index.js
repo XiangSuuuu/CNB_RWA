@@ -8,16 +8,16 @@ const router = createRouter({
 	    vueRouterDev:true,  //完全使用vue-router开发 默认 false  
     },
 	routes:[
+		// {
+		// 	path:'/',
+		// 	name:'',
+		// 	component:()=>import('@/pages/index/index.vue'),
+		// 	meta:{keepAlive: false},
+		// },
 		{
 			path:'/',
 			name:'',
-			component:()=>import('@/pages/index/index.vue'),
-			meta:{keepAlive: false},
-		},
-		{
-			path:'/index',
-			name:'index',
-			component:()=>import('@/pages/index/index'),
+			component:()=>import('@/pages/ecological_rights/ecological_rights.vue'),
 			meta:{keepAlive: false},
 		},
 		{

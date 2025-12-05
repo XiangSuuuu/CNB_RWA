@@ -34,9 +34,9 @@ if (currentProtocol === 'https:') {
 
 // http接口 域名配置
 if (window.location.host.indexOf('localhost') != -1) {
-	Vue.prototype.$httpsUrl = urlHead + '://test-frp.zjtxy.top/test-api-vbo/'; //测试域名  VBOweb3.xin/prod-api-VBO-test
+	Vue.prototype.$httpsUrl = urlHead + '://test-frp.zjtxy.top/test-api-rwa/'; //测试域名  test-frp.zjtxy.top/test-api-rwa
 } else {
-	Vue.prototype.$httpsUrl = urlHead + '://test-frp.zjtxy.top/test-api-vbo/'; //正式域名 vbo-api.qjnhje.com/prod-api-vbo
+	Vue.prototype.$httpsUrl = urlHead + '://test-frp.zjtxy.top/test-api-rwa/'; //正式域名 vbo-api.qjnhje.com/prod-api-vbo
 }
 Vue.prototype.$httpSign = '%In9AXC0#Za8kd&U'; //签名
 

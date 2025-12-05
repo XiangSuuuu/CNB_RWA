@@ -6,7 +6,7 @@
 		<view style='height: 100rpx;'>
 			
 		</view>
-		<!-- <bottom-bar :current="0" /> -->
+		<bottom-bar :current="0" />
 	</view>
 </template>
 <script>
