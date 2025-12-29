@@ -93,7 +93,7 @@
 				{{$t('index._TEXT109')}}：
 			</view>
 			<view style="font-size: 24rpx; font-weight: 800; color: #DFBBFF;">
-				{{discount==1?$t('index._TEXT110'):discount}} {{discount==1?"":$t('index._TEXT111')}}
+				{{discount==1?$t('index._TEXT110'):discount*10}} {{discount==1?"":$t('index._TEXT111')}}
 			</view>
 		</view>
 		<view class="flex-r" style="width: 100%;">
@@ -254,7 +254,7 @@
 						}).then((val) => {
 							this.loading = false;
 							if (val.code == 200) {
-								this.$Common.showToast(this.$t('index._TEXT78'));
+								this.$Common.showToast(this.$t('index._TEXT180'));
 								this.num = '';
 								setTimeout(() => {
 									uni.navigateBack({

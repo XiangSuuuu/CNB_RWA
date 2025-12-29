@@ -195,7 +195,7 @@
 				}).then((val) => {
 					this.loading = false;
 					if (val.code == 200) {
-						this.$Common.showToast(this.$t('index._TEXT78'));
+						this.$Common.showToast(this.$t('index._TEXT180'));
 						
 						setTimeout(() => {
 							this.init()

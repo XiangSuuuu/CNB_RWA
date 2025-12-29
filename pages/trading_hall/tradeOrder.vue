@@ -128,7 +128,7 @@
 							contractId: Number(item[0])
 						}).then((val) => {
 							if (val.code == 200) {
-								this.$Common.showToast(this.$t('index._TEXT78'));
+								this.$Common.showToast(this.$t('index._TEXT180'));
 								setTimeout(() => {
 									this.init();
 								}, 8000)

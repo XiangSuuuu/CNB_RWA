@@ -37,12 +37,14 @@
 									{{item.goodsName}}
 								</view>
 								<view style="font-size: 24rpx; font-weight: 800; color: #DFBBFF;">
-									{{item.goodsPrice}} USDT
+									{{item.goodsPrice}} U
 								</view>
 							</view>
 							
-							<view class="flex-r" style="width: 100%;">
-								
+							<view class="flex-lr" style="width: 100%;">
+								<view style="font-size: 24rpx; font-weight: 500; color: #BE74FF;">
+									获得权益
+								</view>
 								<view style="padding: 0 10rpx; border-radius: 20rpx; background-color: #8229ff; font-size: 24rpx; font-weight: 800; color: #DFBBFF;">
 									{{item.goodsAsset}} CNE
 								</view>

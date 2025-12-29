@@ -26,7 +26,7 @@
 			
 			<view class="trend-wrapss gradient-box">
 				<view class="flex-lr">
-					<view class="top-name flex-l">{{$t('index._TEXT79')}}</view>
+					<view class="top-name flex-l">{{$t('index._TEXT179')}}</view>
 					<view style="font-size: 24rpx; font-weight: 400; color: #B8B8B8; width: 50%; margin-right: 30rpx;" class="flex-r">
 					{{$t('index._TEXT156')}}： {{this.userSellOrderNum.suggestedPrice}}</view>
 				</view>
@@ -94,7 +94,7 @@
 						{{$t('index._TEXT159')}} CNE
 					</view>
 					<view style="font-weight: 400; font-family: Microsoft YaHei; font-size: 24rpx;" class="flex-r">
-						{{$t('index._TEXT160')}}：{{cneBalance}} CNE {{cnbBalance}} CNB
+						{{$t('index._TEXT156')}}：{{ this.userSellOrderNum.suggestedPrice}} <image src="/static/public/USDT.png" mode="widthFix" class="u-icon ml10"></image>
 					</view>
 				</view>
 				<view style="margin-left: 10rpx; width: 97.5%; height: 2rpx; background-color:#655A89 ;">
@@ -106,44 +106,104 @@
 						<view style="width: 80rpx; font-weight: 700; font-size: 24rpx; color: #FFFFFF;">{{$t('index._TEXT157')}}</view>
 						<input style="width: 78%; color: #FFFFFF;"
 							placeholder-style="font-size: 24rpx;color: #99999980;font-family: 'Open Sans';font-weight: 400;"
-							type="digit" v-model="amount" :placeholder="$t('index._TEXT91')" />
+							type="digit" v-model="amount" :placeholder="$t('index._TEXT167')" />
+							<image src="/static/public/USDT.png" mode="widthFix" class="u-icon ml10"></image>
 					</view>
 
 					<view class="inp-wrap gradient-box flex-l" style="margin-bottom: 20rpx;">
 						<view style="width: 80rpx; font-weight: 700; font-size: 24rpx; color: #FFFFFF;">{{$t('index._TEXT152')}}</view>
 						<input style="width: 78%; color: #FFFFFF;" type="number" v-model="num"
-							:placeholder="$t('index._TEXT72')"
+							:placeholder="$t('index._TEXT168')"
 							placeholder-style="font-size: 24rpx;color: #99999980;font-family: 'Open Sans';font-weight: 400;" />
+							
+					</view>
+					
+					<view class="inp-wrap gradient-box flex-l" style="margin-bottom: 20rpx;">
+						<view style="width: 80rpx; font-weight: 700; font-size: 24rpx; color: #FFFFFF;">地址</view>
+						<input style="width: 78%; color: #FFFFFF;" type="text" v-model="receivingAddress"
+							placeholder="接收地址"
+							placeholder-style="font-size: 24rpx;color: #99999980;font-family: 'Open Sans';font-weight: 400;" />
+							
+					</view>
+					<view class="flex-lr" style=" border-radius: 20rpx; padding: 0 24rpx; width: 100%; height: 64rpx;">
+						<view style="font-size: 24rpx; font-weight: 400; color: #FFFFFF;">
+							{{$t('index._TEXT159')}} CNE
+						</view>
+						<view style="font-size: 24rpx; font-weight: 700; color: #C07AFF;">
+							余额： {{cneBalance}}
+						</view>
 					</view>
 					<view class="flex-lr" style=" border-radius: 20rpx; padding: 0 24rpx; width: 100%; height: 64rpx;">
 						<view style="font-size: 24rpx; font-weight: 400; color: #FFFFFF;">
 							{{$t('index._TEXT161')}}
 						</view>
 						<view style="font-size: 24rpx; font-weight: 700; color: #C07AFF;">
-							{{cneNum}}
+							{{cneNum}} CNE
 						</view>
 					</view>
+					
 					<view class="flex-lr" style=" border-radius: 20rpx; padding: 0 24rpx; width: 100%; height: 64rpx;">
 						<view style="font-size: 24rpx; font-weight: 400; color: #FFFFFF;">
-							{{$t('index._TEXT162')}}
+							{{$t('index._TEXT162')}} CNB
 						</view>
 						<view style="font-size: 24rpx; font-weight: 700; color: #C07AFF;">
-							{{num}} cnb
+							 余额： {{cnbBalance}}
 						</view>
 					</view>
+					
+					<view class="flex-lr" style=" border-radius: 20rpx; padding: 0 24rpx; width: 100%; height: 64rpx;">
+						<view style="font-size: 24rpx; font-weight: 400; color: #FFFFFF;">
+							需{{$t('index._TEXT162')}}
+						</view>
+						<view style="font-size: 24rpx; font-weight: 700; color: #C07AFF;">
+							{{num}} CNB
+						</view>
+					</view>
+					
 					<view class="buy-btn flex-center" @click="sellSumbit()">出售
 					</view>
 				</view>
 			</view>
 		</view>
 		<Model :visible.sync="activeModel">
+			
 			<view
-				style="padding: 25rpx; width: 100%; height: 500rpx; background: url('../static/trading_hall/bg2.png') no-repeat;background-size: 100% auto;">
-				<view style="width: 574rpx; margin-top: 80rpx;">
-					<view class="inp-wrap flex-lr" style="border:2rpx solid  #FFFFFF4D;">
-						<input style="color: #FFFFFF;" type="text" v-model="buyAmount" placeholder="请输入数量">
+				style="padding: 25rpx; width: 100%; height: 720rpx; background: url('../static/trading_hall/bg2.png') no-repeat;background-size: 100% 100%;">
+				<view class="junior-content-wrap">
+					<view class="lists-wrap">
+						<view class="lists inp-wrap-two flex-lr">
+							<view class="flex-l text">单价</view>
+							<view> {{currentOrder!==null?Number((currentOrder.sellingPrice/unitNum).toFixed(6)):0}} USDT</view>
+						</view>
+				
+						<view class="lists inp-wrap-two flex-lr" style="margin-bottom: 0rpx; cursor: pointer;"
+							>
+							<view class="flex-l text">数量</view>
+							<view class="flex-r">
+								 {{currentOrder!==null?(currentOrder.nowQuantity/unitNum).toFixed(1):0}}
+							</view>
+						</view>
 					</view>
 				</view>
+				
+				<view class="flex-lr" style="margin-top: 20rpx;">
+					<view style="font-size: 28rpx; font-weight: 600;color: white;">卖出CNE</view>
+					<view class="flex-r">
+						<view style="font-size: 24rpx; font-weight: 500;">余额：</view>
+						<view  style=" font-size: 24rpx; font-weight: 500; color: #82c6af;">{{usdtBalance}} USDT</view>
+					</view>
+				</view>
+				<view class="flex-lr" style="width: 574rpx; margin-top: 20rpx;">
+					<view class="inp-wrap flex-lr" style="border:2rpx solid  #FFFFFF4D;">
+						<input style="color: #FFFFFF;" type="text" v-model="buyAmount" placeholder="请输入数量">
+						
+					</view>
+					<view @click="allAmount()"  class="flex-center" style="margin-left: 10rpx; border-radius: 20rpx; width: 180rpx; height: 70rpx; background-color: #000000;">
+						全部
+					</view>
+				</view>
+				
+				
 
 				<view class="flex-lr"
 					style="margin-top: 10rpx; border-radius: 20rpx; padding: 0 24rpx; width: 100%; height: 64rpx;">
@@ -152,18 +212,12 @@
 					</view>
 					<view class="flex-r">
 						<view style="font-size: 24rpx; font-weight: 700; color: #FFFFFF;">
-							10000
-						</view>
-						<view style="width: 20rpx;"></view>
-						<view style="font-size: 28rpx; font-weight: 400; color: #FFFFFFCC;">
-							DDL
+							无限制
 						</view>
 					</view>
 				</view>
 
-				<view style="margin-left: 10rpx; width: 97.5%; height: 2rpx; background-color:#655A89 ;">
 
-				</view>
 				<view class="flex-lr"
 					style="margin-top: 10rpx; border-radius: 20rpx; padding: 0 24rpx; width: 100%; height: 64rpx;">
 					<view style="font-size: 24rpx; font-weight: 400; color: #FFFFFF;">
@@ -173,9 +227,7 @@
 						{{zcNum}}
 					</view>
 				</view>
-				<view style="margin-left: 10rpx; width: 97.5%; height: 2rpx; background-color:#655A89 ;">
 
-				</view>
 				<view class="flex-center bind_button" @click="buySellOrderSumbit()" style="width: 574rpx;
 				height: 60rpx;
 				background: #C889FF;
@@ -193,7 +245,7 @@
 				background-size: 100% 100%; position: absolute; top: -25rpx;  width: 244rpx ; height: 85rpx;">
 						<view class="flex-center"
 							style="height: 70rpx; color: #FFFFFF; font-size: 30rpx; font-weight: 600;">
-							{{$t('index._TEXT158')}}
+							{{$t('index._TEXT185')}}
 						</view>
 					</view>
 				</view>
@@ -238,11 +290,13 @@
 				num: null,
 				cneBalance: 0,
 				cnbBalance: 0,
+				usdtBalance: 0,
 				// address: '',
 				limitNum: '0',
 				currentOrder: null,
 				userSellOrderNum:null,
 				myChart:null,
+				receivingAddress:null,
 			}
 		},
 		watch: {
@@ -313,6 +367,10 @@
 				this.getAmount();
 				this.getUserSellOrderNum();
 				setTimeout(this.initchart,1500);
+				this.receivingAddress = this.myAddress;
+			},
+			allAmount(){
+				this.buyAmount = (this.currentOrder.nowQuantity/this.unitNum).toFixed(1);
 			},
 			initchart(){
 				this.$Request.get('app/getTokenPriceGraph', {}).then((res) => {
@@ -482,6 +540,12 @@
 							this.cnbBalance = Number((num / this.unitNum).toFixed(6));
 						}
 					});
+					this.$usdttcc.balanceOf(this.myAddress).then((res) => {
+						if (res && res._hex) {
+							let num = parseInt(res._hex);
+							this.usdtBalance = Number((num / this.unitNum).toFixed(6));
+						}
+					});
 					console.log("this.cneBalance" + this.cneBalance)
 					console.log("this.cnbBalance" + this.cnbBalance)
 				} catch (e) {
@@ -547,6 +611,7 @@
 				console.log(this.$c2ctcc)
 				await this.getUserSellOrderNum();
 				// if (this.amount < 0.5) return this.$Common.showToast(this.$t('index._TEXT105'));
+				if (!this.receivingAddress) return this.$Common.showToast("地址不能为空");
 
 				if (!this.amount) return this.$Common.showToast(this.$t('index._TEXT167'));
 				if (!this.num) return this.$Common.showToast(this.$t('index._TEXT168'));
@@ -588,13 +653,13 @@
 				console.log([
 					amount.toString(),
 					num.toString(),
-					this.myAddress,
+					this.receivingAddress,
 					limitNum.toString(),
 				])
 				this.$c2ctcc.placeSell(
 					amount.toString(),
 					num.toString(),
-					this.myAddress,
+					this.receivingAddress,
 					limitNum.toString(),
 				).then((ret) => {
 					if (ret) {
@@ -624,7 +689,7 @@
 						}).then((val) => {
 							this.loading = false;
 							if (val.code == 200) {
-								this.$Common.showToast(this.$t('index._TEXT78'));
+								this.$Common.showToast(this.$t('index._TEXT180'));
 								this.amount = '';
 								this.num = '';
 								setTimeout(() => {
@@ -648,15 +713,15 @@
 				// if (this.num > this.syLimit&&this.syLimit!=0) return this.$Common.showToast(this.$t('index._TEXT76')+'：' +this.syLimit);
 
 				if (this.buyAmount != Number(this.currentOrder.nowQuantity / this.unitNum)) {
-					if (this.buyAmount % 10 !== 0) return this.$Common.showToast(this.$t('index._TEXT138'));
+					if (this.buyAmount % 10 !== 0) return this.$Common.showToast(this.$t('index._TEXT181'));
 				}
-				if (!this.buyAmount) return this.$Common.showToast(this.$t('index._TEXT72'));
+				if (!this.buyAmount) return this.$Common.showToast(this.$t('index._TEXT182'));
 				if (String(this.buyAmount).includes('.')) {
-					return this.$Common.showToast(this.$t('index._TEXT136'));
+					return this.$Common.showToast(this.$t('index._TEXT183'));
 				}
 
 				if (this.buyAmount > Number(this.currentOrder.nowQuantity / this.unitNum)) return this.$Common
-					.showToast(this.$t('index._TEXT77'));
+					.showToast(this.$t('index._TEXT184'));
 				if ((this.currentOrder.sellingPrice / this.unitNum * this.buyAmount) > this.zBalance) return this
 					.$Common.showToast(this.$t('index._TEXT39'));
 				await this.approveMarts(this.$usdttcc, this.$c2ctcc.address, 0);
@@ -680,7 +745,7 @@
 						}).then((val) => {
 							this.loading = false;
 							if (val.code == 200) {
-								this.$Common.showToast(this.$t('index._TEXT78'));
+								this.$Common.showToast(this.$t('index._TEXT180'));
 								this.buyAmount = '';
 								setTimeout(() => {
 									uni.navigateBack({
@@ -862,8 +927,61 @@
 			/* 可选：为了让切换更平滑，可以加个过渡 */
 			transition: background-image 0.2s;
 		}
+		
+		.u-icon {
+			width: 42rpx;
+			height: 42rpx;
+		}
 
-
+		.junior-content-wrap {
+			width: 100%;
+			margin-top: 46rpx;
+			border-radius: 20rpx;
+			border: 2rpx solid #655A8980;
+			// background-image: linear-gradient(0deg, #1D2D3C, #111C2E);
+			padding: 20rpx 20rpx;
+			box-sizing: border-box;
+			// margin-bottom: 42rpx;
+		
+			.lists-wrap {
+				width: 100%;
+				// padding: 0 40rpx;
+				box-sizing: border-box;
+		
+				.lists {
+					width: 100%;
+					height: 64rpx;
+					border-radius: 20rpx;
+					background: linear-gradient(0deg, #272031, #272031);
+					margin-bottom: 20rpx;
+					padding: 16rpx 24rpx;
+					box-sizing: border-box;
+					color: white;
+					font-size: 24rpx;
+					font-family: 'Open Sans';
+					font-weight: 700;
+				}
+		
+				.inp-wrap-two {
+					background: linear-gradient(0deg, #272031, #272031);
+		
+				}
+			}
+		
+			.buy-btn {
+				width: 100%;
+				height: 80rpx;
+				// background: url('../../static/trade/btnBg2.png') no-repeat;
+				// background-size: 100% 100%;
+				// margin-top: 32rpx;
+				color: #ffffff;
+				font-size: 24rpx;
+				font-family: 'Open Sans';
+				font-weight: bold;
+				border-radius: 20rpx;
+				background-color: #333333;
+			}
+		}
 
 		.inp-wrap {
 			width: 100%;
