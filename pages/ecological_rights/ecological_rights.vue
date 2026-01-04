@@ -110,6 +110,13 @@
 				{{$t('index._TEXT28')}}
 			</view>
 			
+			<view class="flex-center" style="width: 100%;">
+				<view class="gradient-text" style="margin-top: 10rpx;">
+					
+					所有生态权益卡每使用90天，释放周期增加6天
+				</view>
+			</view>
+			
 			<view class="flex-center gradient-panel"
 				style="margin-top: 96rpx; font-size: 28rpx; font-weight: 600; color: #FFFFFF;">
 				{{$t('index._TEXT76')}}
@@ -117,7 +124,6 @@
 			<view class="gradient-text" style="margin-top: 10rpx;">
 				{{$t('index._TEXT77')}}<br>
 				{{$t('index._TEXT78')}}<br>
-				{{$t('index._TEXT79')}}
 			</view>
 		</view>
 
@@ -307,10 +313,10 @@
 
 				if (diffX > threshold) {
 					// 👉 右滑
-					this.gainCurrent(1)
+					this.gainCurrent(0)
 				} else if (diffX < -threshold) {
 					// 👉 左滑
-					this.gainCurrent(0)
+					this.gainCurrent(1)
 				}
 			},
 			returnPage() {

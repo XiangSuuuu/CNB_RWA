@@ -37,7 +37,7 @@
 		</view>
 		<view class="flex-lr" v-for="(item, index) in orderList" :key="index"
 			style="padding: 20rpx; width: 100%; height: 172rpx; margin-bottom: 20rpx; border-radius: 14rpx; border: 2rpx solid #000000; background: linear-gradient(180deg, #2c2136 0%, #201f21ff 100%);;">
-			<image src="https://miaobi-lite.bj.bcebos.com/miaobi/5mao/b%27LV8xNzMyNTY2MjI0LjA1ODU4Nw%3D%3D%27/0.png"
+			<image :src="item.goodsImg"
 				style="width: 200rpx; height: 132rpx; border-radius:14rpx ;"></image>
 			<view style="width: 65%; height: 100%; display: flex;flex-direction: column;justify-content: space-evenly;">
 				<view class="flex-lr" style="width: 100%;">
@@ -98,9 +98,9 @@
 				tabIx: 0,
 				orderList: [],
 				stateMap: {
-					"-1": $t('index._TEXT121'),
-					"2": $t('index._TEXT122'),
-					"4": $t('index._TEXT123')
+					"-1": this.$t('index._TEXT121'),
+					"2": this.$t('index._TEXT122'),
+					"4": this.$t('index._TEXT123')
 				}
 
 			}

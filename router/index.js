@@ -45,6 +45,12 @@ const router = createRouter({
 			meta:{keepAlive: false},
 		},
 		{
+			path:'/buyOrder',
+			name:'buyOrder',
+			component:()=>import('@/pages/trading_hall/buyOrder.vue'),
+			meta:{keepAlive: false},
+		},
+		{
 			path:'/tradingHall',
 			name:'tradingHall',
 			component:()=>import('@/pages/trading_hall/trading_hall.vue'),

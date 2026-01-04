@@ -17,11 +17,7 @@
 					{{$t('index._TEXT154')}}
 				</view>
 			</view>
-			<view @click="skipUrl('/tradeOrder')" class="flex-center" style="position: absolute; right: 20rpx; color: #BE74FF; font-size: 24rpx; font-family: 400;">
-				{{$t('index._TEXT155')}} <image src="/static/index/arrow_right.png" style="width: 32rpx; height: 32rpx;"></image>
-			</view>
 		</view>
-
 		<view style="margin-top: 30rpx;" v-show="currentIndex===0">
 			
 			<view class="trend-wrapss gradient-box">
@@ -35,6 +31,28 @@
 				</view>
 				<view class="buy-coin-wrap">
 					<view class="charts-box" id="main"></view>
+				</view>
+			</view>
+			
+			<view class="flex-lr" style="width: 100%; height: 83rpx; border-radius: 20rpx; border: 1px solid #655A89;;">
+				<view class="flex-lr" style="width: 100%; height: 82rpx; padding:24rpx 34rpx ; " @click="changeTab(1)">
+					<view style="font-family:'Open Sans' ; font-size: 26rpx; font-weight: 800; color: white;">
+						创建订单
+					</view>
+					<image 
+					    src="/static/public/arrow-right.png" 
+					    style="width:40rpx; height:40rpx; filter: brightness(0) invert(1);"
+					></image>
+				</view>
+				<view style="width: 4rpx; height: 40rpx; background-color: #655A89;;"></view>
+				<view class="flex-lr" style="width: 100%; height: 82rpx; padding:24rpx 34rpx ;" @click="skipUrl('/buyOrder')">
+					<view style="font-family:'Open Sans' ; font-size: 26rpx; font-weight: 800; color: white;">
+						购买记录
+					</view>
+					<image 
+					    src="/static/public/arrow-right.png" 
+					    style="width:40rpx; height:40rpx; filter: brightness(0) invert(1);"
+					></image>
 				</view>
 			</view>
 			
@@ -87,6 +105,9 @@
 		</view>
 
 		<view v-if="currentIndex==1">
+			<view @click="skipUrl('/tradeOrder')" class="flex-center" style="position: absolute; right: 20rpx; top: 150rpx; color: #BE74FF; font-size: 24rpx; font-family: 400;">
+				{{$t('index._TEXT155')}} <image src="/static/index/arrow_right.png" style="width: 32rpx; height: 32rpx;"></image>
+			</view>
 
 			<view class="trend-wraps gradient-box">
 				<view class="top-names flex-lr">
@@ -224,7 +245,7 @@
 						{{$t('index._TEXT161')}}
 					</view>
 					<view style="font-size: 24rpx; font-weight: 700; color: #FFFFFF;">
-						{{zcNum}}
+						{{zcNum}} U
 					</view>
 				</view>
 

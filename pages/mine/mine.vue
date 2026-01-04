@@ -133,6 +133,15 @@
 					</view>
 				</view>
 			</view>
+			<view class="lists2 flex-lr">
+				<view class="flex-l">退回权益</view>
+				<view class="flex-r nums">
+					{{truncateToFixed((userInfo.useBalance5/unitNum),2)}}
+					<view class="btns flex-center" @click="gainWithdrawal(userInfo.useBalance5,5)">
+						{{$t('index._TEXT137')}}
+					</view>
+				</view>
+			</view>
 			
 			<view class="lists2 flex-lr">
 				<view class="flex-l">{{$t('index._TEXT138')}}</view>
@@ -169,9 +178,9 @@
 				<view class="order-item flex-center" @click="gainTabIx(1)" :class="tabIx2 == 1 ? 'order-item-in' : ''">
 					{{$t('index._TEXT141')}}
 				</view>
-				<view class="order-item flex-center" @click="gainTabIx(2)" :class="tabIx2 == 2 ? 'order-item-in' : ''">
+				<!-- <view class="order-item flex-center" @click="gainTabIx(2)" :class="tabIx2 == 2 ? 'order-item-in' : ''">
 					{{$t('index._TEXT142')}}
-				</view>
+				</view> -->
 			</view>
 			<view style="width: 100%; height: 2rpx; background-color: #655A8980; position: relative; top: -10rpx;">
 
@@ -402,7 +411,7 @@
 						const bigDeadline = this.toFixed(res.data.deadline);
 						console.log(bigNumber.toString());
 						this.$Loading.handlemount();
-						if (type == 1 || type == 2 || type == 3) {
+						if (type == 1 || type == 2 || type == 3 ||type == 5 ) {
 							const par = [
 								res.data.toAddress,
 								bigNumber.toString(),
